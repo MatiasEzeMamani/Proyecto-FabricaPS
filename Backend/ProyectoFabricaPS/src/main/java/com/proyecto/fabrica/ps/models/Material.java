@@ -1,5 +1,6 @@
 package com.proyecto.fabrica.ps.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class Material {
 	private NameMaterial name_material;
 
 	@OneToMany(mappedBy = "materialBrand", cascade = CascadeType.ALL)
-	private List<MaterialFormData> materialFormData;
+	private List<MaterialFormData> materialFormData = new ArrayList<>();
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
