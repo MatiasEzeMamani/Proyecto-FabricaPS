@@ -159,6 +159,14 @@ public class Material {
 		this.updatedAt = updatedAt;
 	}
 
+	public List<MaterialPart> getPartMaterial() {
+		return partMaterial;
+	}
+
+	public void setPartMaterial(List<MaterialPart> partMaterial) {
+		this.partMaterial = partMaterial;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

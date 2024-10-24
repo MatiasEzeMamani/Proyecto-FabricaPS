@@ -23,7 +23,7 @@ public class Bag {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long hoseId;
+	private Long BagId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
@@ -36,10 +36,38 @@ public class Bag {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	public Long getHoseId() {
-		return hoseId;
+	public Long getBagId() {
+		return BagId;
 	}
-	
+
+	public void setBagId(Long bagId) {
+		BagId = bagId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 
