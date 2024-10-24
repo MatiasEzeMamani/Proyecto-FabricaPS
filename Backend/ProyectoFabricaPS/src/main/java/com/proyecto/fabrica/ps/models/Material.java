@@ -60,6 +60,9 @@ public class Material {
 
 	@OneToMany(mappedBy = "material", cascade = CascadeType.ALL)
 	private List<MaterialFormData> materialFormData;
+	
+	@OneToMany(mappedBy = "material", cascade = CascadeType.ALL)
+	private List<MaterialPart> partMaterial;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

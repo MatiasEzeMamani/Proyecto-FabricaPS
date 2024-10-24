@@ -1,0 +1,8 @@
+package com.proyecto.fabrica.ps.models;
+
+@Data
+@Entity
+@Table(name = "materials_has_parts")
+public class MaterialPart {
+
+}
