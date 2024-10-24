@@ -1,14 +1,18 @@
 package com.proyecto.fabrica.ps.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -33,6 +37,9 @@ public class Component {
 	@NotNull
 	@Min(value = 0, message = "El número no debe ser negativo.")
 	private int stock;
+	
+	@OneToMany(mappedBy = "component", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Article> articleComponent;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -79,6 +86,14 @@ public class Component {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	public List<Article> getArticleComponent() {
+		return articleComponent;
+	}
+
+	public void setArticleComponent(List<Article> articleComponent) {
+		this.articleComponent = articleComponent;
 	}
 
 	@PrePersist

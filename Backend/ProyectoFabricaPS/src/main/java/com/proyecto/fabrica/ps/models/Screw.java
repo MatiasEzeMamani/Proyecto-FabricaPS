@@ -1,14 +1,18 @@
 package com.proyecto.fabrica.ps.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -28,6 +32,9 @@ public class Screw {
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
+	
+	@OneToMany(mappedBy = "screw", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Article> articleScrew;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -66,6 +73,14 @@ public class Screw {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	public List<Article> getArticleScrew() {
+		return articleScrew;
+	}
+
+	public void setArticleScrew(List<Article> articleScrew) {
+		this.articleScrew = articleScrew;
 	}
 
 	@PrePersist
