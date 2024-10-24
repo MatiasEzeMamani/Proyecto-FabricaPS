@@ -26,12 +26,12 @@ public class TypeMaterial {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long type_material_id;
+	private Long typeMaterialId;
 
 	@NotNull
 	private String name;
 	
-	@OneToMany(mappedBy = "type_material", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "typeMaterial", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Material> materialType;
 	
 	@Column(updatable = false)
@@ -40,13 +40,13 @@ public class TypeMaterial {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public Long getType_material_id() {
-		return type_material_id;
+	
+	public Long getTypeMaterialId() {
+		return typeMaterialId;
 	}
 
-	public void setType_material_id(Long type_material_id) {
-		this.type_material_id = type_material_id;
+	public void setTypeMaterialId(Long typeMaterialId) {
+		this.typeMaterialId = typeMaterialId;
 	}
 
 	public String getName() {

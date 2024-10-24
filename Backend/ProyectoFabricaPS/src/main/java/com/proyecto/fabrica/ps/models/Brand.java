@@ -27,7 +27,7 @@ public class Brand {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long brand_id;
+	private Long brandId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
@@ -43,12 +43,12 @@ public class Brand {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	public Long getBrand_id() {
-		return brand_id;
+	public Long getBrandId() {
+		return brandId;
 	}
 
-	public void setBrand_id(Long brand_id) {
-		this.brand_id = brand_id;
+	public void setBrandId(Long brandId) {
+		this.brandId = brandId;
 	}
 
 	public String getName() {

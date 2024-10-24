@@ -26,13 +26,13 @@ public class MaterialFormData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long materials_form_data_id;
+	private Long materialsFormDataId;
 
 	@NotNull
 	private int quantity;
 	
 	@Enumerated(EnumType.STRING)
-	private int type_movement;
+	private TypeMovement typeMovement;
 	
 	@ManyToOne
 	@JoinColumn(name = "material_id")
@@ -44,13 +44,13 @@ public class MaterialFormData {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
-	public Long getMaterials_form_data_id() {
-		return materials_form_data_id;
+
+	public Long getMaterialsFormDataId() {
+		return materialsFormDataId;
 	}
 
-	public void setMaterials_form_data_id(Long materials_form_data_id) {
-		this.materials_form_data_id = materials_form_data_id;
+	public void setMaterialsFormDataId(Long materialsFormDataId) {
+		this.materialsFormDataId = materialsFormDataId;
 	}
 
 	public int getQuantity() {
@@ -61,12 +61,12 @@ public class MaterialFormData {
 		this.quantity = quantity;
 	}
 
-	public int getType_movement() {
-		return type_movement;
+	public TypeMovement getTypeMovement() {
+		return typeMovement;
 	}
 
-	public void setType_movement(int type_movement) {
-		this.type_movement = type_movement;
+	public void setTypeMovement(TypeMovement typeMovement) {
+		this.typeMovement = typeMovement;
 	}
 
 	public Material getMaterial() {

@@ -27,13 +27,13 @@ public class NameMaterial {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long color_id;
+	private Long nameMaterialId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
 
-	@OneToMany(mappedBy = "name_material", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nameMaterial", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Material> materialName;
 	
 	@Column(updatable = false)
@@ -43,12 +43,12 @@ public class NameMaterial {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	public Long getColor_id() {
-		return color_id;
+	public Long getNameMaterialId() {
+		return nameMaterialId;
 	}
 
-	public void setColor_id(Long color_id) {
-		this.color_id = color_id;
+	public void setNameMaterialId(Long nameMaterialId) {
+		this.nameMaterialId = nameMaterialId;
 	}
 
 	public String getName() {

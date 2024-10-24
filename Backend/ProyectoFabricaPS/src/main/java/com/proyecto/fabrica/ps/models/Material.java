@@ -1,6 +1,5 @@
 package com.proyecto.fabrica.ps.models;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Material {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long material_id;
+	private Long materialId;
 
 	@NotNull
 	private int code;
@@ -53,14 +52,14 @@ public class Material {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "type_material_id")
-	private TypeMaterial type_material;
+	private TypeMaterial typeMaterial;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "name_material_id")
-	private NameMaterial name_material;
+	private NameMaterial nameMaterial;
 
-	@OneToMany(mappedBy = "materialBrand", cascade = CascadeType.ALL)
-	private List<MaterialFormData> materialFormData = new ArrayList<>();
+	@OneToMany(mappedBy = "material", cascade = CascadeType.ALL)
+	private List<MaterialFormData> materialFormData;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -68,13 +67,13 @@ public class Material {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
-	public Long getMaterial_id() {
-		return material_id;
+
+	public Long getMaterialId() {
+		return materialId;
 	}
 
-	public void setMaterial_id(Long material_id) {
-		this.material_id = material_id;
+	public void setMaterialId(Long materialId) {
+		this.materialId = materialId;
 	}
 
 	public int getCode() {
@@ -117,20 +116,20 @@ public class Material {
 		this.color = color;
 	}
 
-	public TypeMaterial getType_material() {
-		return type_material;
+	public TypeMaterial getTypeMaterial() {
+		return typeMaterial;
 	}
 
-	public void setType_material(TypeMaterial type_material) {
-		this.type_material = type_material;
+	public void setTypeMaterial(TypeMaterial typeMaterial) {
+		this.typeMaterial = typeMaterial;
 	}
 
-	public NameMaterial getName_material() {
-		return name_material;
+	public NameMaterial getNameMaterial() {
+		return nameMaterial;
 	}
 
-	public void setName_material(NameMaterial name_material) {
-		this.name_material = name_material;
+	public void setNameMaterial(NameMaterial nameMaterial) {
+		this.nameMaterial = nameMaterial;
 	}
 
 	public List<MaterialFormData> getMaterialFormData() {

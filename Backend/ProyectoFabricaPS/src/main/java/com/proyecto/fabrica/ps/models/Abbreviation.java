@@ -27,7 +27,7 @@ public class Abbreviation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long abbreviation_id;
+	private Long abbreviationId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
@@ -43,12 +43,12 @@ public class Abbreviation {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	public Long getAbbreviation_id() {
-		return abbreviation_id;
+	public Long getAbbreviationId() {
+		return abbreviationId;
 	}
 
-	public void setAbbreviation_id(Long abbreviation_id) {
-		this.abbreviation_id = abbreviation_id;
+	public void setAbbreviationId(Long abbreviationId) {
+		this.abbreviationId = abbreviationId;
 	}
 
 	public String getName() {

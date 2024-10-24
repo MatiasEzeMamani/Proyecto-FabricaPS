@@ -27,7 +27,7 @@ public class Color {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long color_id;
+	private Long colorId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
@@ -43,12 +43,12 @@ public class Color {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	public Long getColor_id() {
-		return color_id;
+	public Long getColorId() {
+		return colorId;
 	}
 
-	public void setColor_id(Long color_id) {
-		this.color_id = color_id;
+	public void setColorId(Long colorId) {
+		this.colorId = colorId;
 	}
 
 	public String getName() {
