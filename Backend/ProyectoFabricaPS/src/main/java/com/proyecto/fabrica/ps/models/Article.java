@@ -65,6 +65,94 @@ public class Article {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Long getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public boolean isToluene() {
+		return toluene;
+	}
+
+	public void setToluene(boolean toluene) {
+		this.toluene = toluene;
+	}
+
+	public boolean isSpring() {
+		return spring;
+	}
+
+	public void setSpring(boolean spring) {
+		this.spring = spring;
+	}
+
+	public Bag getBag() {
+		return bag;
+	}
+
+	public void setBag(Bag bag) {
+		this.bag = bag;
+	}
+
+	public Hose getHose() {
+		return hose;
+	}
+
+	public void setHose(Hose hose) {
+		this.hose = hose;
+	}
+
+	public Screw getScrew() {
+		return screw;
+	}
+
+	public void setScrew(Screw screw) {
+		this.screw = screw;
+	}
+
+	public Component getComponent() {
+		return component;
+	}
+
+	public void setComponent(Component component) {
+		this.component = component;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 
