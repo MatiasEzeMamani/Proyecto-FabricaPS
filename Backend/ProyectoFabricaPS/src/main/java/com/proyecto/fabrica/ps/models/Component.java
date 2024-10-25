@@ -48,6 +48,8 @@ public class Component {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Component() {}
+	
 	public Long getComponentId() {
 		return componentId;
 	}

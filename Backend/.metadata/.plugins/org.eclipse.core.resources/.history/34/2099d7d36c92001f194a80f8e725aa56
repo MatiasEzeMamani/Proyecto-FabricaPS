@@ -60,8 +60,6 @@ public class Worker {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	public Worker() {}
-	
 	public Long getWorkerId() {
 		return workerId;
 	}

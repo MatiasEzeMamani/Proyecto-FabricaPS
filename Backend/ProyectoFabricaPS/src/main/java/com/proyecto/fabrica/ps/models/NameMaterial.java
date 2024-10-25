@@ -43,6 +43,8 @@ public class NameMaterial {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public NameMaterial() {}
+	
 	public Long getNameMaterialId() {
 		return nameMaterialId;
 	}

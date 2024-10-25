@@ -43,6 +43,8 @@ public class Screw {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Screw() {}
+	
 	public Long getScrewId() {
 		return screwId;
 	}

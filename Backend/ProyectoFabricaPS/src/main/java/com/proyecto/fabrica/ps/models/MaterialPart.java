@@ -40,6 +40,8 @@ public class MaterialPart {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public MaterialPart() {}
+	
 	public Long getMaterialsHasPartsId() {
 		return materialsHasPartsId;
 	}

@@ -22,35 +22,33 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "colors")
-public class Color {
-
+@Table(name = "name_materials")
+public class NameMaterial {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long colorId;
+	private Long nameMaterialId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
 
-	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Material> materialColor;
+	@OneToMany(mappedBy = "nameMaterial", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Material> materialName;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public Color() {}
 	
-	public Long getColorId() {
-		return colorId;
+	public Long getNameMaterialId() {
+		return nameMaterialId;
 	}
 
-	public void setColorId(Long colorId) {
-		this.colorId = colorId;
+	public void setNameMaterialId(Long nameMaterialId) {
+		this.nameMaterialId = nameMaterialId;
 	}
 
 	public String getName() {
@@ -61,12 +59,12 @@ public class Color {
 		this.name = name;
 	}
 
-	public List<Material> getMaterialColor() {
-		return materialColor;
+	public List<Material> getMaterialName() {
+		return materialName;
 	}
 
-	public void setMaterialColor(List<Material> materialColor) {
-		this.materialColor = materialColor;
+	public void setMaterialName(List<Material> materialName) {
+		this.materialName = materialName;
 	}
 
 	public Date getCreatedAt() {
@@ -90,8 +88,8 @@ public class Color {
 		this.createdAt = new Date(); 
 	}
 
-	@PreUpdate 
+	@PreUpdate
 	protected void onUpdate() {
-		this.updatedAt = new Date();
+		this.updatedAt = new Date(); 
 	}
 }

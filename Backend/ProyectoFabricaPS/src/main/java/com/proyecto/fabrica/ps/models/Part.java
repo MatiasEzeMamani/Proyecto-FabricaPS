@@ -47,6 +47,8 @@ public class Part {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Part() {}
+	
 	public Long getPartId() {
 		return partId;
 	}

@@ -1,40 +1,37 @@
 package com.proyecto.fabrica.ps.models;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "colors")
-public class Color {
-
+@Table(name = "materials_has_parts")
+public class MaterialPart {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long colorId;
-
-	@NotNull
-	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
-	private String name;
-
-	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Material> materialColor;
+	private Long materialsHasPartsId;
+	
+	@ManyToOne
+	@JoinColumn(name = "material_id")
+	private Material material;
+	
+	@ManyToOne
+	@JoinColumn(name = "part_id")
+	private Part part;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,31 +39,29 @@ public class Color {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public Color() {}
 	
-	public Long getColorId() {
-		return colorId;
+	public Long getMaterialsHasPartsId() {
+		return materialsHasPartsId;
 	}
 
-	public void setColorId(Long colorId) {
-		this.colorId = colorId;
+	public void setMaterialsHasPartsId(Long materialsHasPartsId) {
+		this.materialsHasPartsId = materialsHasPartsId;
 	}
 
-	public String getName() {
-		return name;
+	public Material getMaterial() {
+		return material;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMaterial(Material material) {
+		this.material = material;
 	}
 
-	public List<Material> getMaterialColor() {
-		return materialColor;
+	public Part getPart() {
+		return part;
 	}
 
-	public void setMaterialColor(List<Material> materialColor) {
-		this.materialColor = materialColor;
+	public void setPart(Part part) {
+		this.part = part;
 	}
 
 	public Date getCreatedAt() {
@@ -87,11 +82,11 @@ public class Color {
 
 	@PrePersist 
 	protected void onCreate() {
-		this.createdAt = new Date(); 
+		this.createdAt = new Date();
 	}
 
 	@PreUpdate 
 	protected void onUpdate() {
-		this.updatedAt = new Date();
+		this.updatedAt = new Date(); 
 	}
 }

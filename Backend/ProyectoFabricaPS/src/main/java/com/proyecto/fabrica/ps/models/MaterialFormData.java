@@ -44,7 +44,9 @@ public class MaterialFormData {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
+	
+	public MaterialFormData() {}
+	
 	public Long getMaterialsFormDataId() {
 		return materialsFormDataId;
 	}

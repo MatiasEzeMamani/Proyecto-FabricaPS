@@ -43,6 +43,8 @@ public class Brand {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
+	public Brand() {}
+	
 	public Long getBrandId() {
 		return brandId;
 	}

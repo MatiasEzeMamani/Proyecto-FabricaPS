@@ -43,8 +43,6 @@ public class Color {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	public Color() {}
-	
 	public Long getColorId() {
 		return colorId;
 	}

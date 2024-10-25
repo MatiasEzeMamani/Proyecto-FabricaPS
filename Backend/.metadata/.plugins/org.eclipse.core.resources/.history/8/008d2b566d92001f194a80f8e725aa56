@@ -71,8 +71,6 @@ public class Material {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	public Material() {}
-	
 	public Long getMaterialId() {
 		return materialId;
 	}

@@ -43,6 +43,8 @@ public class Abbreviation {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
+	public Abbreviation() {}
+	
 	public Long getAbbreviationId() {
 		return abbreviationId;
 	}

@@ -40,6 +40,8 @@ public class ComponentPart {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public ComponentPart() {}
+	
 	public Long getComponentHasPartId() {
 		return componentHasPartId;
 	}

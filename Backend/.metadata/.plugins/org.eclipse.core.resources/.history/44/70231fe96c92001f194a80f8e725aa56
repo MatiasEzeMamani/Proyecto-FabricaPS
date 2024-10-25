@@ -65,8 +65,6 @@ public class Article {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	public Article() {}
-	
 	public Long getArticleId() {
 		return articleId;
 	}

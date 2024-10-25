@@ -16,25 +16,30 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "colors")
-public class Color {
-
+@Table(name = "components")
+public class Component {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long colorId;
-
+	private Long componentId;
+	
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
-
-	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Material> materialColor;
+	
+	@NotNull
+	@Min(value = 0, message = "El número no debe ser negativo.")
+	private int stock;
+	
+	@OneToMany(mappedBy = "component", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Article> articleComponent;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,15 +47,13 @@ public class Color {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public Color() {}
 	
-	public Long getColorId() {
-		return colorId;
+	public Long getComponentId() {
+		return componentId;
 	}
 
-	public void setColorId(Long colorId) {
-		this.colorId = colorId;
+	public void setComponentId(Long componentId) {
+		this.componentId = componentId;
 	}
 
 	public String getName() {
@@ -61,12 +64,12 @@ public class Color {
 		this.name = name;
 	}
 
-	public List<Material> getMaterialColor() {
-		return materialColor;
+	public int getStock() {
+		return stock;
 	}
 
-	public void setMaterialColor(List<Material> materialColor) {
-		this.materialColor = materialColor;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	public Date getCreatedAt() {
@@ -84,14 +87,22 @@ public class Color {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	public List<Article> getArticleComponent() {
+		return articleComponent;
+	}
 
-	@PrePersist 
+	public void setArticleComponent(List<Article> articleComponent) {
+		this.articleComponent = articleComponent;
+	}
+
+	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 
 	}
 
 	@PreUpdate 
 	protected void onUpdate() {
-		this.updatedAt = new Date();
+		this.updatedAt = new Date(); 
 	}
 }

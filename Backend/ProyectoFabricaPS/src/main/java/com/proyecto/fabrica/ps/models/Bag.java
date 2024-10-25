@@ -43,6 +43,8 @@ public class Bag {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Bag() {}
+	
 	public Long getBagId() {
 		return BagId;
 	}

@@ -22,19 +22,19 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "colors")
-public class Color {
-
+@Table(name = "bags")
+public class Bag {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long colorId;
+	private Long BagId;
 
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
-
-	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Material> materialColor;
+	
+	@OneToMany(mappedBy = "bag", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Article> articleBag;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,15 +42,13 @@ public class Color {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public Color() {}
 	
-	public Long getColorId() {
-		return colorId;
+	public Long getBagId() {
+		return BagId;
 	}
 
-	public void setColorId(Long colorId) {
-		this.colorId = colorId;
+	public void setBagId(Long bagId) {
+		BagId = bagId;
 	}
 
 	public String getName() {
@@ -59,14 +57,6 @@ public class Color {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Material> getMaterialColor() {
-		return materialColor;
-	}
-
-	public void setMaterialColor(List<Material> materialColor) {
-		this.materialColor = materialColor;
 	}
 
 	public Date getCreatedAt() {
@@ -85,13 +75,21 @@ public class Color {
 		this.updatedAt = updatedAt;
 	}
 
-	@PrePersist 
+	public List<Article> getArticleBag() {
+		return articleBag;
+	}
+
+	public void setArticleBag(List<Article> articleBag) {
+		this.articleBag = articleBag;
+	}
+
+	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 
 	}
 
 	@PreUpdate 
 	protected void onUpdate() {
-		this.updatedAt = new Date();
+		this.updatedAt = new Date(); 
 	}
 }

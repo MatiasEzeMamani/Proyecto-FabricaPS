@@ -43,6 +43,8 @@ public class Hose {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
+	public Hose() {}
+	
 	public Long getHoseId() {
 		return hoseId;
 	}
