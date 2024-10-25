@@ -1,0 +1,8 @@
+package com.proyecto.fabrica.ps.models;
+
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+public enum TypeMovement {
+	ENTRADA, CONSUMO, TRASPASO
+}

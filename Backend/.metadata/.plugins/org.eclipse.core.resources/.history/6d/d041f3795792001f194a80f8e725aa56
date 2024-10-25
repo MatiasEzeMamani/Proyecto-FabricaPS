@@ -1,0 +1,5 @@
+package com.proyecto.fabrica.ps.models;
+
+public class Worker {
+
+}

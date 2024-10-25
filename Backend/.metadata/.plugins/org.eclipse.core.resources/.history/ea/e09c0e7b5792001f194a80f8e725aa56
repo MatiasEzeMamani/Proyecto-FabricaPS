@@ -1,0 +1,8 @@
+package com.proyecto.fabrica.ps.models;
+
+@Data
+@Entity
+@Table(name = "workers")
+public class Worker {
+
+}
