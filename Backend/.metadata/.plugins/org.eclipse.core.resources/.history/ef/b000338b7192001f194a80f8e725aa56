@@ -1,0 +1,15 @@
+package com.proyecto.fabrica.ps.models;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Data
+@Entity
+@Table(name = "movement_details") 
+public class MovementDetail {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long BagId;
+}

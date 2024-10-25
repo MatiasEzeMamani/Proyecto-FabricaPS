@@ -1,16 +1,20 @@
 package com.proyecto.fabrica.ps.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -52,6 +56,9 @@ public class Worker {
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@OneToMany(mappedBy = "worker", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<MovementWorker> movementWorker;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -132,6 +139,14 @@ public class Worker {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public List<MovementWorker> getMovementWorker() {
+		return movementWorker;
+	}
+
+	public void setMovementWorker(List<MovementWorker> movementWorker) {
+		this.movementWorker = movementWorker;
 	}
 
 	@PrePersist
