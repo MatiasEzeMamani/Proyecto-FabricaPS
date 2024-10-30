@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,6 +37,9 @@ public class Part {
 	@NotNull
 	@Min(value = 1, message = "El número debe ser mayor que 0.")
 	private int matrix;
+	
+	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ComponentPart> componentHasPart;
 	
 	@OneToMany(mappedBy = "part", cascade = CascadeType.ALL)
 	private List<MaterialPart> materialPart;

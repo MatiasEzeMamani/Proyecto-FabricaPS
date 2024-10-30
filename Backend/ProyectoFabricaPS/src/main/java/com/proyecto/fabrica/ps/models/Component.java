@@ -39,7 +39,7 @@ public class Component {
 	private int stock;
 	
 	@OneToMany(mappedBy = "component", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Article> articleComponent;
+	private List<ComponentPart> partHasComponent;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -89,13 +89,13 @@ public class Component {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	public List<Article> getArticleComponent() {
-		return articleComponent;
+
+	public List<ComponentPart> getPartHasComponent() {
+		return partHasComponent;
 	}
 
-	public void setArticleComponent(List<Article> articleComponent) {
-		this.articleComponent = articleComponent;
+	public void setPartHasComponent(List<ComponentPart> partHasComponent) {
+		this.partHasComponent = partHasComponent;
 	}
 
 	@PrePersist

@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -32,6 +33,11 @@ public class ComponentPart {
 	@ManyToOne
 	@JoinColumn(name = "part_id")
 	private Part part;
+	
+	@OneToOne(
+			mappedBy = "componentHasPart"
+			)
+	private Article article;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

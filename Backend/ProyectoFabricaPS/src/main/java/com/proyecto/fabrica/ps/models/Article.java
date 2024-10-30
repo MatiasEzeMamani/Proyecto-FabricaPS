@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -54,9 +55,9 @@ public class Article {
 	@JoinColumn(name = "screw_id")
 	private Screw screw;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "component_id")
-	private Component component;
+	@OneToOne
+	@JoinColumn(name = "component_has_part_id")
+	private ComponentPart componentHasPart;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -131,12 +132,12 @@ public class Article {
 		this.screw = screw;
 	}
 
-	public Component getComponent() {
-		return component;
+	public ComponentPart getComponentHasPart() {
+		return componentHasPart;
 	}
 
-	public void setComponent(Component component) {
-		this.component = component;
+	public void setComponentHasPart(ComponentPart componentHasPart) {
+		this.componentHasPart = componentHasPart;
 	}
 
 	public Date getCreatedAt() {
