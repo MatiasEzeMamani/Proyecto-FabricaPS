@@ -1,0 +1,6 @@
+package com.proyecto.fabrica.ps.mapper;
+
+@Mapper
+public interface ArticleMapper {
+
+}

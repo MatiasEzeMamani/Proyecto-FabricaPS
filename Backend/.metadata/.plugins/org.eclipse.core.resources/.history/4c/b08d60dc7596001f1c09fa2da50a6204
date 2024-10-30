@@ -1,0 +1,5 @@
+package com.proyecto.fabrica.ps.repositories;
+
+public interface MovementWorkerRepository extends JpaRepository<MovementWorker, Long> {
+
+}

@@ -1,0 +1,110 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.proyecto.fabrica.ps.models.Bag;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+import com.proyecto.fabrica.ps.models.Hose;
+import com.proyecto.fabrica.ps.models.Screw;
+
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ArticleDTO {
+	
+	private Long articleId;
+	private String name;
+	private String code;
+	private boolean toluene;
+	private boolean spring;
+	
+	private Long bagId;
+	private Long hoseId;
+	private Long screwId;
+	private Long componentHasPartId;
+	
+	
+	private String bagName;
+	private String hoseName;
+	private String screwName;
+	private String componentHasPartName;
+	
+	public Long getArticleId() {
+		return articleId;
+	}
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public boolean isToluene() {
+		return toluene;
+	}
+	public void setToluene(boolean toluene) {
+		this.toluene = toluene;
+	}
+	public boolean isSpring() {
+		return spring;
+	}
+	public void setSpring(boolean spring) {
+		this.spring = spring;
+	}
+	public Bag getBagId() {
+		return bagId;
+	}
+	public void setBagId(Bag bagId) {
+		this.bagId = bagId;
+	}
+	public Bag getBagName() {
+		return bagName;
+	}
+	public void setBagName(Bag bagName) {
+		this.bagName = bagName;
+	}
+	public Hose getHoseId() {
+		return hoseId;
+	}
+	public void setHoseId(Hose hoseId) {
+		this.hoseId = hoseId;
+	}
+	public Hose getHoseName() {
+		return hoseName;
+	}
+	public void setHoseName(Hose hoseName) {
+		this.hoseName = hoseName;
+	}
+	public Screw getScrewId() {
+		return screwId;
+	}
+	public void setScrewId(Screw screwId) {
+		this.screwId = screwId;
+	}
+	public Screw getScrewName() {
+		return screwName;
+	}
+	public void setScrewName(Screw screwName) {
+		this.screwName = screwName;
+	}
+	public ComponentPart getComponentHasPartId() {
+		return componentHasPartId;
+	}
+	public void setComponentHasPartId(ComponentPart componentHasPartId) {
+		this.componentHasPartId = componentHasPartId;
+	}
+	public ComponentPart getComponentHasPartName() {
+		return componentHasPartName;
+	}
+	public void setComponentHasPartName(ComponentPart componentHasPartName) {
+		this.componentHasPartName = componentHasPartName;
+	}
+}

@@ -1,0 +1,32 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.proyecto.fabrica.ps.models.Bag;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+import com.proyecto.fabrica.ps.models.Hose;
+import com.proyecto.fabrica.ps.models.Screw;
+
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ArticleDTO {
+	
+	private Long articleId;
+	private String name;
+	private String code;
+	private boolean toluene;
+	private boolean spring;
+	
+	private Bag bagId;
+	private Bag bagName;
+	
+	private Hose hoseId;
+	private Hose hoseName;
+	
+	private Screw screwId;
+	private Screw screwName;
+	
+	private ComponentPart componentHasPartId;
+	private ComponentPart componentHasPartName;
+}

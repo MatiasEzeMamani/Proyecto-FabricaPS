@@ -1,0 +1,29 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
+
+import com.proyecto.fabrica.ps.dto.ArticleDTO;
+import com.proyecto.fabrica.ps.models.Article;
+
+@Mapper(componentModel = "spring")
+public interface ArticleMapper {
+	ArticleMapper INSTANCE = Mappers.getMapper(ArticleMapper.class);
+		
+	@Mapping(source = "bag.id", target = "bagId")
+    @Mapping(source = "bag.name", target = "bagName") 
+    @Mapping(source = "hose.id", target = "hoseId") 
+    @Mapping(source = "hose.name", target = "hoseName") 
+    @Mapping(source = "screw.id", target = "screwId") 
+    @Mapping(source = "screw.name", target = "screwName") 
+    @Mapping(source = "componentHasPart.id", target = "componentHasPartId") 
+    @Mapping(source = "componentHasPart.name", target = "componentHasPartName")
+	ArticleDTO articleToArticleDTO(Article article);
+	
+	 @Mapping(source = "bagId", target = "bag.id") // Mapea el ID de la bolsa al objeto
+	    @Mapping(source = "hoseId", target = "hose.id") // Mapea el ID de la manguera al objeto
+	    @Mapping(source = "screwId", target = "screw.id") // Mapea el ID del tornillo al objeto
+	    @Mapping(source = "componentHasPartId", target = "componentHasPart.id") // Mapea el ID del componente al objeto
+	Article articleDTOToArticle(ArticleDTO articleDTO);
+}
