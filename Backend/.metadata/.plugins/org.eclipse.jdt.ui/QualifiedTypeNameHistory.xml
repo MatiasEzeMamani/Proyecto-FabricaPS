@@ -7,5 +7,27 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="org.mapstruct.factory.Mappers"/>
+    <fullyQualifiedTypeName name="org.mapstruct.Mapping"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Color"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Component"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Part"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Bag"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.connector.Response"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotBlank"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.util.function.Function"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="io.jsonwebtoken.io.IOException"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.beans.Customizer"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.Customizer"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.dto.Response"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Role"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.utils.Utils"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.mapper.WorkerMapper"/>
 </qualifiedTypeNameHistroy>

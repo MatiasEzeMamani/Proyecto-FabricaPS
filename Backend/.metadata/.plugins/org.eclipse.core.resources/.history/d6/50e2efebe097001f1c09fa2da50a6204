@@ -1,0 +1,27 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.proyecto.fabrica.ps.models.Role;
+
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
+public class WorkerDTO {
+	
+	private Long workerId;
+	
+	private String name;
+	
+	private String lastname;
+	
+	private String email;
+	
+	private Role role;
+
+}

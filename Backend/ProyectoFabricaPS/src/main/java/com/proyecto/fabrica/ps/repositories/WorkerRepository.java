@@ -1,9 +1,14 @@
 package com.proyecto.fabrica.ps.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.proyecto.fabrica.ps.models.Worker;
 
 public interface WorkerRepository extends JpaRepository<Worker, Long> {
 
+	boolean existsByEmail(String email);
+	
+	Optional<Worker> findByEmail(String email);
 }

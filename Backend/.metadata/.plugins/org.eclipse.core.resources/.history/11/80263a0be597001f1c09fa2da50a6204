@@ -1,0 +1,14 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+
+
+public class CustomUserDetailsService implements UserDetails {
+	
+	@Autowired
+	private WorkerRepository wr;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+		return wr.findByEmail(username).orElseThrow(() -> new OurException("Username/Email not found"));
+	}
+}

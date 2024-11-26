@@ -1,0 +1,10 @@
+package com.proyecto.fabrica.ps.models;
+
+public enum Role {
+	ADMINISTRATOR, OPERATOR;
+
+	boolean isBlank() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

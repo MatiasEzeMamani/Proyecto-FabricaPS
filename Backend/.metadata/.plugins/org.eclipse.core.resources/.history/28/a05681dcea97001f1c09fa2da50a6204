@@ -1,0 +1,30 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.repositories.WorkerRepository;
+import com.proyecto.fabrica.ps.service.interfac.IWorkerService;
+import com.proyecto.fabrica.ps.utils.JWTUtils;
+
+
+
+@Service
+public class WorkerService implements IWorkerService{
+	
+	@Autowired
+	private WorkerRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JWTUtils jwtUtils;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	
+}

@@ -1,0 +1,18 @@
+package com.proyecto.fabrica.ps.security;
+
+@Configuration
+public class CorsConfig {
+	
+	@Bean
+	public WebMvcConfigurer WebMvcConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+					.allowedMethods("GET", "POST", "PUT", "DELETE")
+					.allowedOrigins("*");
+			}
+		};
+		
+	}
+}

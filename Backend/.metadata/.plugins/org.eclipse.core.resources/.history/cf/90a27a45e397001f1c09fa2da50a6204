@@ -1,0 +1,5 @@
+package com.proyecto.fabrica.ps.exception;
+
+public class OurException {
+
+}

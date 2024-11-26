@@ -1,6 +1,0 @@
-package com.proyecto.fabrica.ps.dto;
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ArticlesDTO {
-
-}

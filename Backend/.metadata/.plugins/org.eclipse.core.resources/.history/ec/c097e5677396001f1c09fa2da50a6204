@@ -1,5 +1,0 @@
-package com.proyecto.fabrica.ps.repositories;
-
-public interface AbbreviationRepository extends JpaRepository<Abbreviation, Long> {
-
-}

@@ -1,27 +1,28 @@
 package com.proyecto.fabrica.ps.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
-import com.proyecto.fabrica.ps.dto.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.article.BagDTO;
+import com.proyecto.fabrica.ps.dto.article.ComponentPartDTO;
+import com.proyecto.fabrica.ps.dto.article.HoseDTO;
+import com.proyecto.fabrica.ps.dto.article.ScrewDTO;
 import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Bag;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+import com.proyecto.fabrica.ps.models.Hose;
+import com.proyecto.fabrica.ps.models.Screw;
 
 @Mapper(componentModel = "spring")
 public interface ArticleMapper {
 
-	@Mapping(source = "bag.id", target = "bagId")
-	@Mapping(source = "bag.name", target = "bagName")
-	@Mapping(source = "hose.id", target = "hoseId")
-	@Mapping(source = "hose.name", target = "hoseName")
-	@Mapping(source = "screw.id", target = "screwId")
-	@Mapping(source = "screw.name", target = "screwName")
-	@Mapping(source = "componentHasPart.id", target = "componentHasPartId")
-	@Mapping(source = "componentHasPart.name", target = "componentHasPartName")
 	ArticleDTO articleToArticleDTO(Article article);
+	
+	BagDTO bagToBagDTO(Bag bag);
 
-	@Mapping(source = "bagId", target = "bag.id")
-	@Mapping(source = "hoseId", target = "hose.id")
-	@Mapping(source = "screwId", target = "screw.id")
-	@Mapping(source = "componentHasPartId", target = "componentHasPart.id")
-	Article articleDTOToArticle(ArticleDTO articleDTO);
+	HoseDTO hoseToHoseDTO(Hose hose);
+	
+	ScrewDTO screwToScrewDTO(Screw screw);
+	
+	ComponentPartDTO componentPartToComponentPartDTO(ComponentPart componenetPart);
 }

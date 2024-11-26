@@ -1,9 +1,0 @@
-package com.proyecto.fabrica.ps.dto;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-@Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ArticlesDTO {
-
-}

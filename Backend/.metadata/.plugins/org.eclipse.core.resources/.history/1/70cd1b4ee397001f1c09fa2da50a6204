@@ -1,0 +1,9 @@
+package com.proyecto.fabrica.ps.exception;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.proyecto.fabrica.ps.models.Abbreviation;
+
+public class OurException extends JpaRepository<Abbreviation, Long> {
+
+}
