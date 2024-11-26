@@ -1,7 +1,10 @@
 package com.proyecto.fabrica.ps.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -71,32 +74,146 @@ public class WorkerService implements IWorkerService{
 
 	@Override
 	public Response login(LoginRequest loginRequest) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Response response = new Response();
+		
+		try {
+			
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+			
+			var worker = workerRepository.findByEmail(loginRequest.getEmail()).orElseThrow(()-> new OurException("Worker not found"));
+			
+			var token = jwtUtils.generateToken(worker);
+			
+			response.setStatusCode(200);
+			response.setToken(token);
+			response.setRole(worker.getRole());
+			response.setExpirationTime("7 Days");
+			response.setMessage("successful");
+			
+		} catch (OurException e) {
+			
+			response.setStatusCode(404);
+	    	response.setMessage(e.getMessage());
+	    	
+		} catch (Exception e) {
+			
+			response.setStatusCode(500);
+	    	response.setMessage("Error Ocured During Worker Login " + e.getMessage());
+	    	
+		}
+		
+		return response;
 	}
 
 	@Override
 	public Response getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Response response = new Response();
+		
+		try {
+			
+			List<Worker> workerList = workerRepository.findAll();
+			List<WorkerDTO> workerDTOList = workerMapper.workersToWorkerDTOs(workerList);
+			
+			response.setStatusCode(200);
+			response.setMessage("successful");
+			response.setWorkerList(workerDTOList);
+				
+		} catch (Exception e) {
+			
+			response.setStatusCode(500);
+	    	response.setMessage("Error getting all workers " + e.getMessage());
+	    	
+		}
+		
+		return response;
 	}
 
 	@Override
 	public Response deleteUser(String workerId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Response response = new Response();
+		
+		try {
+			
+			workerRepository.findById(Long.valueOf(workerId)).orElseThrow(() -> new OurException("User not found")); 
+			workerRepository.deleteById(Long.valueOf(workerId));
+			
+			response.setStatusCode(200);
+			response.setMessage("successful");
+			
+		} catch (OurException e){
+			
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e){
+			
+			response.setStatusCode(500);
+			response.setMessage("Error getting all users " + e.getMessage());
+			
+		}
+		
+		return response;
 	}
 
 	@Override
 	public Response getUserById(String workerId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Response response = new Response();
+		
+		try {
+			
+			Worker worker = workerRepository.findById(Long.valueOf(workerId)).orElseThrow(() -> new OurException("Worker not found"));
+			WorkerDTO workerDTO = workerMapper.workerToWorkerDTO(worker);
+			
+			response.setStatusCode(200);
+			response.setMessage("successful");
+			response.setWorker(workerDTO);
+			
+		} catch (OurException e) {
+			
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+			
+			response.setStatusCode(500);
+			response.setMessage("Error getting all users " + e.getMessage());
+			
+		}
+		
+		return response;
 	}
 
 	@Override
-	public Response getMyInfo(String workerId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Response getMyInfo(String email) {
+
+		Response response = new Response();
+		
+		try {
+			
+			Worker worker = workerRepository.findByEmail(email).orElseThrow(() -> new OurException("Worker not found"));
+			WorkerDTO workerDTO = workerMapper.workerToWorkerDTO(worker);
+			
+			response.setStatusCode(200);
+			response.setMessage("successful");
+			response.setWorker(workerDTO);
+			
+		} catch (OurException e) {
+			
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+			
+			response.setStatusCode(500);
+			response.setMessage("Error getting all users " + e.getMessage());
+			
+		}
+		
+		return response;
 	}
 	
 	

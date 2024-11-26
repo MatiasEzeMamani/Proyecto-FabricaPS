@@ -16,5 +16,5 @@ public interface IWorkerService {
 	
 	Response getUserById(String workerId);
 	
-	Response getMyInfo(String workerId);
+	Response getMyInfo(String email);
 }

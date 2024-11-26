@@ -16,10 +16,12 @@ public class Response {
 	private int statusCode;                     
     private String message;
     private String token;
+    private String expirationTime;
     private Role role;
     private ArticleDTO article;                 
-    private List<ArticleDTO> articleList;
     private WorkerDTO worker;
+    private List<ArticleDTO> articleList;
+    private List<WorkerDTO> workerList;
     
 	public int getStatusCode() {
 		return statusCode;
@@ -62,5 +64,17 @@ public class Response {
 	}
 	public void setWorker(WorkerDTO worker) {
 		this.worker = worker;
+	}
+	public String getExpirationTime() {
+		return expirationTime;
+	}
+	public void setExpirationTime(String expirationTime) {
+		this.expirationTime = expirationTime;
+	}
+	public List<WorkerDTO> getWorkerList() {
+		return workerList;
+	}
+	public void setWorkerList(List<WorkerDTO> workerList) {
+		this.workerList = workerList;
 	}
 }
