@@ -11,9 +11,11 @@ public class WorkerDTO {
 	
 	private Long workerId;
 	private String name;
-	private String lastname;
+	private String lastName;
 	private String email;
 	private Role role;
+	private String password;
+	private String confirm;
 
 	public Long getWorkerId() {
 		return workerId;
@@ -31,12 +33,12 @@ public class WorkerDTO {
 		this.name = name;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -53,5 +55,21 @@ public class WorkerDTO {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getConfirm() {
+		return confirm;
+	}
+
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
 	}
 }

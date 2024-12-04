@@ -1,0 +1,82 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+import com.proyecto.fabrica.ps.models.MaterialPart;
+
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PartDTO {
+	
+	private Long partId;
+	
+	private String name;
+	
+	private int matrix;
+	
+	private List<ComponentPart> componentHasPartId;
+	
+	private List<MaterialPart> materialPartId;
+	
+	private List<ComponentPart> componentHasPartName;
+
+	public Long getPartId() {
+		return partId;
+	}
+
+	public void setPartId(Long partId) {
+		this.partId = partId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getMatrix() {
+		return matrix;
+	}
+
+	public void setMatrix(int matrix) {
+		this.matrix = matrix;
+	}
+
+	public List<ComponentPart> getComponentHasPartId() {
+		return componentHasPartId;
+	}
+
+	public void setComponentHasPartId(List<ComponentPart> componentHasPartId) {
+		this.componentHasPartId = componentHasPartId;
+	}
+
+	public List<MaterialPart> getMaterialPartId() {
+		return materialPartId;
+	}
+
+	public void setMaterialPartId(List<MaterialPart> materialPartId) {
+		this.materialPartId = materialPartId;
+	}
+
+	public List<ComponentPart> getComponentHasPartName() {
+		return componentHasPartName;
+	}
+
+	public void setComponentHasPartName(List<ComponentPart> componentHasPartName) {
+		this.componentHasPartName = componentHasPartName;
+	}
+
+	public List<MaterialPart> getMaterialPartName() {
+		return materialPartName;
+	}
+
+	public void setMaterialPartName(List<MaterialPart> materialPartName) {
+		this.materialPartName = materialPartName;
+	}
+}

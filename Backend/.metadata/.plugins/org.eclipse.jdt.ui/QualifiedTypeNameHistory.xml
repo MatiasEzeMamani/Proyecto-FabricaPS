@@ -24,10 +24,12 @@
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.beans.Customizer"/>
     <fullyQualifiedTypeName name="org.springframework.security.config.Customizer"/>
-    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.dto.Response"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.models.Role"/>
     <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.utils.Utils"/>
     <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.mapper.WorkerMapper"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.proyecto.fabrica.ps.dto.Response"/>
+    <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
+    <fullyQualifiedTypeName name="java.security.Key"/>
 </qualifiedTypeNameHistroy>

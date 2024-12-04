@@ -1,9 +1,0 @@
-package com.proyecto.fabrica.ps.service.interfac;
-
-import com.proyecto.fabrica.ps.dto.LoginRequest;
-import com.proyecto.fabrica.ps.dto.Response;
-
-public interface IWorkerService {
-
-	Response register(LoginRequest loginRequest);
-}

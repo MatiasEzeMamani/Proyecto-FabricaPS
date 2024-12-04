@@ -43,8 +43,9 @@ public class Worker implements UserDetails {
 	
 	@NotEmpty(message = "Coloque su apellido")
 	@Size(min = 3, message = "El apellido debe contener mas de 3 caracteres.")
-	private String lastname;
+	private String lastName;
 	
+	@Column(nullable = false, unique = true)
 	@NotEmpty(message = "Coloque su Email")
 	@Email(message = "email invalido")
 	private String email;
@@ -54,7 +55,6 @@ public class Worker implements UserDetails {
 	private String password;
 	
 	@Transient
-	@NotEmpty(message = "Coloque su contraseña otra vez")
 	@Size(min = 6, message = "La contraseña necesita al menos 6 caracteres.")
 	private String confirm;
 
@@ -135,12 +135,12 @@ public class Worker implements UserDetails {
 		this.name = name;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {

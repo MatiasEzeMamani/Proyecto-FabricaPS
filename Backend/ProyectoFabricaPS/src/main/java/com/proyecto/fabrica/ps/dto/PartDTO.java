@@ -23,9 +23,6 @@ public class PartDTO {
 	private List<MaterialPart> materialPartId;
 	
 	private List<ComponentPart> componentHasPartName;
-	
-	private List<MaterialPart> materialPartName;
-	
 
 	public Long getPartId() {
 		return partId;
@@ -73,13 +70,5 @@ public class PartDTO {
 
 	public void setComponentHasPartName(List<ComponentPart> componentHasPartName) {
 		this.componentHasPartName = componentHasPartName;
-	}
-
-	public List<MaterialPart> getMaterialPartName() {
-		return materialPartName;
-	}
-
-	public void setMaterialPartName(List<MaterialPart> materialPartName) {
-		this.materialPartName = materialPartName;
 	}
 }
