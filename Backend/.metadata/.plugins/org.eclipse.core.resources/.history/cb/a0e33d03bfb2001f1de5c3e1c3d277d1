@@ -1,0 +1,5 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+public interface IPartService {
+	Response addPart(PartDTO partDTO);
+}

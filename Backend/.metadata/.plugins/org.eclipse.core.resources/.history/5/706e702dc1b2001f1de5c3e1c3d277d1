@@ -1,0 +1,9 @@
+package com.proyecto.fabrica.ps.mapper;
+
+@Mapper(componentModel = "spring")
+public Interface PartMapper {
+	
+	PartDTO partToPartDTO(Part part);
+ 
+	List<PartDTO> partsToPartDTOs(List<Part> parts);
+}

@@ -20,6 +20,8 @@ public class Response {
     private Role role;
     private ArticleDTO article;                 
     private WorkerDTO worker;
+    private PartDTO part;                       
+    private List<PartDTO> partList;
     private List<ArticleDTO> articleList;
     private List<WorkerDTO> workerList;
     
@@ -76,5 +78,17 @@ public class Response {
 	}
 	public void setWorkerList(List<WorkerDTO> workerList) {
 		this.workerList = workerList;
+	}
+	public PartDTO getPart() {
+		return part;
+	}
+	public void setPart(PartDTO part) {
+		this.part = part;
+	}
+	public List<PartDTO> getPartList() {
+		return partList;
+	}
+	public void setPartList(List<PartDTO> partList) {
+		this.partList = partList;
 	}
 }

@@ -1,0 +1,6 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+@Service
+public class PartService {
+
+}

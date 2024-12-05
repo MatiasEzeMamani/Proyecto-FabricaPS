@@ -1,0 +1,18 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.PartDTO;
+import com.proyecto.fabrica.ps.models.Part;
+
+@Mapper(componentModel = "spring")
+public interface PartMapper {
+	
+	PartDTO partToPartDTO(Part part);
+	
+	Part partDTOToPart(PartDTO partDTO);
+	
+	List<PartDTO> partsToPartDTOs(List<Part> parts);
+}

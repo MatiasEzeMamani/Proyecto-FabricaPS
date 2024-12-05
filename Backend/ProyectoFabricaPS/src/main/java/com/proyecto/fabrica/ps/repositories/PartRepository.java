@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.proyecto.fabrica.ps.models.Part;
 
 public interface PartRepository extends JpaRepository<Part, Long> {
-
+	
+	boolean existsByMatrix(int matrix);
+	
 }

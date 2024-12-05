@@ -1,0 +1,86 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.PartDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.mapper.PartMapper;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.repositories.PartRepository;
+import com.proyecto.fabrica.ps.service.interfac.IPartService;
+
+@Service
+public class PartService implements IPartService {
+	
+	@Autowired
+	private PartRepository partRepository;
+	
+	@Autowired
+	private PartMapper partMapper;
+	
+	@Override
+	public Response getAllParts() {
+		
+		Response response = new Response();
+		
+		try {
+			List<Part> parts = partRepository.findAll();
+				
+			response.setStatusCode(200);
+			response.setMessage("Lista de piezas obtenida exitosamente");
+			response.setPartList(partMapper.partsToPartDTOs(parts));
+	
+		} catch (Exception e) {
+	    
+			response.setStatusCode(500);
+	        response.setMessage("Error al obtener las piezas: " + e.getMessage());
+		}
+		
+		return response;
+	}
+
+	@Override
+	public Response addPart(PartDTO partDTO) {
+		
+		Response response = new Response();
+		
+		try {
+			if (partRepository.existsByMatrix(partDTO.getMatrix())) {
+				throw new OurException("La pieza con el numero de matriz " + partDTO.getMatrix() + " ya esta registrada.");
+			}
+			
+			Part part = partMapper.partDTOToPart(partDTO);
+			Part savePart = partRepository.save(part);
+			
+			response.setStatusCode(200);
+			response.setMessage("Lista de piezas obtenida exitosamente");
+			response.setPartList(partMapper.partsToPartDTOs(parts));
+		}
+
+		
+		
+		return null;
+	}
+
+	@Override
+	public Response updatedPart(Long id, PartDTO partDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response deletePart(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getPartById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
