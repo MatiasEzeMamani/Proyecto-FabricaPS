@@ -1,0 +1,56 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+public class MaterialDTO {
+	
+	private String code;
+	private int stock;
+	
+	private BrandDTO brand;
+	private AbbreviationDTO abbreviation;
+	private ColorDTO color;
+	private TypeMaterialDTO typeMaterial;
+	private NameMaterialDTO nameMaterial;
+	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public BrandDTO getBrand() {
+		return brand;
+	}
+	public void setBrand(BrandDTO brand) {
+		this.brand = brand;
+	}
+	public AbbreviationDTO getAbbreviation() {
+		return abbreviation;
+	}
+	public void setAbbreviation(AbbreviationDTO abbreviation) {
+		this.abbreviation = abbreviation;
+	}
+	public ColorDTO getColor() {
+		return color;
+	}
+	public void setColor(ColorDTO color) {
+		this.color = color;
+	}
+	public TypeMaterialDTO getTypeMaterial() {
+		return typeMaterial;
+	}
+	public void setTypeMaterial(TypeMaterialDTO typeMaterial) {
+		this.typeMaterial = typeMaterial;
+	}
+	public NameMaterialDTO getNameMaterial() {
+		return nameMaterial;
+	}
+	public void setNameMaterial(NameMaterialDTO nameMaterial) {
+		this.nameMaterial = nameMaterial;
+	}
+}

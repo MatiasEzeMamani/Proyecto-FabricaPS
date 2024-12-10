@@ -1,0 +1,28 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Material;
+
+@Mapper(componentModel = "spring")
+public interface MaterialMapper {
+
+    @Mapping(target = "abbreviation.materialAbbreviation", ignore = true)
+    @Mapping(target = "brand.materialBrand", ignore = true)
+    @Mapping(target = "color.materialColor", ignore = true)
+    @Mapping(target = "typeMaterial.materialType", ignore = true)
+    @Mapping(target = "nameMaterial.materialName", ignore = true)
+    MaterialDTO materialToMaterialDTO(Material material);
+
+    @Mapping(target = "abbreviation.materialAbbreviation", ignore = true)
+    @Mapping(target = "brand.materialBrand", ignore = true)
+    @Mapping(target = "color.materialColor", ignore = true)
+    @Mapping(target = "typeMaterial.materialType", ignore = true)
+    @Mapping(target = "nameMaterial.materialName", ignore = true)
+    Material materialDTOToMaterial(MaterialDTO materialDTO); 
+
+    List<MaterialDTO> materialsToMaterialDTOs(List<Material> materials);
+}

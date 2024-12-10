@@ -1,0 +1,17 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import com.proyecto.fabrica.ps.dto.PartDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Material;
+import com.proyecto.fabrica.ps.models.Part;
+
+public interface MaterialMapper {
+
+	MaterialDTO materialToMaterialDTO(Material material);
+	
+	Material materialDTOToMaterial(MaterialDTO materialDTO); 
+	
+	List<MaterialDTO> materialsToMaterialDTOs(List<Material> materials);
+}

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +33,7 @@ public class TypeMaterial {
 	@NotNull
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "typeMaterial", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Material> materialType;
 	
@@ -83,9 +86,11 @@ public class TypeMaterial {
 		this.updatedAt = updatedAt;
 	}
 
-	@PrePersist 
+	@PrePersist
 	protected void onCreate() {
-		this.createdAt = new Date(); 
+		Date currentDate = new Date();
+		this.createdAt = currentDate;
+	    this.updatedAt = currentDate;
 	}
 
 	@PreUpdate 

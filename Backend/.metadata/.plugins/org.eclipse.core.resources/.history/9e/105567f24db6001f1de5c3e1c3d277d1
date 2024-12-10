@@ -1,0 +1,9 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+
+public interface IMaterialService {
+	
+	Response addMaterial(MaterialDTO materialDTO)
+}

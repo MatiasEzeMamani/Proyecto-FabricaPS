@@ -97,9 +97,11 @@ public class MaterialFormData {
 
 	@PrePersist
 	protected void onCreate() {
-		this.createdAt = new Date();
+		Date currentDate = new Date();
+		this.createdAt = currentDate;
+	    this.updatedAt = currentDate;
 	}
-
+	
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date(); 

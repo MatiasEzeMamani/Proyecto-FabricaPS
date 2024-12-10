@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,7 +34,8 @@ public class Brand {
 	@NotNull
 	@Size(min = 2, max = 100, message = "El nombre debe tener al menos 2 letras")
 	private String name;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Material> materialBrand;
 	
@@ -87,7 +90,9 @@ public class Brand {
 
 	@PrePersist
 	protected void onCreate() {
-		this.createdAt = new Date(); 
+		Date currentDate = new Date();
+		this.createdAt = currentDate;
+	    this.updatedAt = currentDate;
 	}
 
 	@PreUpdate 

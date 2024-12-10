@@ -1,0 +1,10 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+public class MaterialDTO {
+	
+	private int code;
+	private int stock;
+	
+	private BrandDTO brand;
+	
+}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
 import com.proyecto.fabrica.ps.models.Role;
 
 import lombok.Data;
@@ -20,10 +21,12 @@ public class Response {
     private Role role;
     private ArticleDTO article;                 
     private WorkerDTO worker;
-    private PartDTO part;                       
+    private PartDTO part;
+    private MaterialDTO material;
     private List<PartDTO> partList;
     private List<ArticleDTO> articleList;
     private List<WorkerDTO> workerList;
+    private List<MaterialDTO> materialList;
     
 	public int getStatusCode() {
 		return statusCode;
@@ -90,5 +93,17 @@ public class Response {
 	}
 	public void setPartList(List<PartDTO> partList) {
 		this.partList = partList;
+	}
+	public List<MaterialDTO> getMaterialList() {
+		return materialList;
+	}
+	public void setMaterialList(List<MaterialDTO> materialList) {
+		this.materialList = materialList;
+	}
+	public MaterialDTO getMaterial() {
+		return material;
+	}
+	public void setMaterial(MaterialDTO material) {
+		this.material = material;
 	}
 }

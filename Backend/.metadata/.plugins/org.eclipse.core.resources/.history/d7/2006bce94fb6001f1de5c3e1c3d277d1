@@ -1,0 +1,9 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import com.proyecto.fabrica.ps.service.interfac.IMaterialService;
+
+public class MaterialService implements IMaterialService{
+	
+	@Autowired
+	private MaterialRepository materialRepository;
+}

@@ -18,8 +18,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -32,10 +33,10 @@ public class Material {
 	private Long materialId;
 
 	@NotNull
-	private int code;
+	private String code;
 
-	@NotNull
-	@Size(min = 0, max = 300)
+	@Min(value = 0, message = "El stock no puede ser negativo.")
+	@Max(value = 10000, message = "El stock no puede exceder 10,000 unidades.")
 	private int stock;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -81,11 +82,11 @@ public class Material {
 		this.materialId = materialId;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -171,7 +172,9 @@ public class Material {
 
 	@PrePersist
 	protected void onCreate() {
-		this.createdAt = new Date();
+		Date currentDate = new Date();
+		this.createdAt = currentDate;
+	    this.updatedAt = currentDate;
 	}
 
 	@PreUpdate

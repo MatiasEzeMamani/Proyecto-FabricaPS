@@ -1,0 +1,37 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+public class TypeMaterialDTO {
+	
+	private Long typeMaterialId;
+
+	private String name;
+	
+	private List<MaterialDTO> materialType;
+
+	
+	public Long getTypeMaterialId() {
+		return typeMaterialId;
+	}
+
+	public void setTypeMaterialId(Long typeMaterialId) {
+		this.typeMaterialId = typeMaterialId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<MaterialDTO> getMaterialType() {
+		return materialType;
+	}
+
+	public void setMaterialType(List<MaterialDTO> materialType) {
+		this.materialType = materialType;
+	}	
+}

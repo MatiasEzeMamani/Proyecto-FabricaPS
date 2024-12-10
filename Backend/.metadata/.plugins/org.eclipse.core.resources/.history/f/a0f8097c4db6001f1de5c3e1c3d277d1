@@ -1,0 +1,13 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import com.proyecto.fabrica.ps.dto.PartDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Material;
+import com.proyecto.fabrica.ps.models.Part;
+
+public interface MaterialMapper {
+
+	MaterialDTO materialToMaterialDTO(Part part);
+	
+	Material materialDTOToMaterial(MaterialDTO partDTO); 
+}

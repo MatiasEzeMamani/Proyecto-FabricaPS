@@ -1,0 +1,12 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+import com.proyecto.fabrica.ps.models.ComponentPart;
+
+public class ColorDTO {
+	
+	private String name;
+	
+	private List<ComponentPart> componentHasPartId;
+}

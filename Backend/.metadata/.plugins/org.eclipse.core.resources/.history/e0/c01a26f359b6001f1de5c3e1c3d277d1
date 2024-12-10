@@ -1,0 +1,28 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+import com.proyecto.fabrica.ps.models.Material;
+
+public class ColorDTO {
+	
+	private String name;
+	
+	private List<Material> materialColor;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Material> getMaterialColor() {
+		return materialColor;
+	}
+
+	public void setMaterialColor(List<Material> materialColor) {
+		this.materialColor = materialColor;
+	}
+}

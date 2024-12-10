@@ -1,0 +1,75 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.mapper.MaterialMapper;
+import com.proyecto.fabrica.ps.models.Material;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.MaterialRepository;
+import com.proyecto.fabrica.ps.service.interfac.IMaterialService;
+
+public class MaterialService implements IMaterialService{
+	
+	@Autowired
+	private MaterialRepository materialRepository;
+	
+	@Autowired
+	private MaterialMapper materialMapper;
+
+	@Override
+	public Response addMaterial(MaterialDTO materialDTO) {
+
+		Response response = new Response();
+
+		
+		
+		return null;
+	}
+
+	@Override
+	public Response updatedMaterial(Long id, MaterialDTO materialDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response deleteMaterial(Long id, Worker currentUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getMaterialById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getAllMaterials() {
+		
+		Response response = new Response();
+		
+		try {
+			
+			List<Material> materials = materialRepository.findAll();
+			
+			response.setStatusCode(200);
+			response.setMessage("Lista de materiales obtenida exitosa");
+			response.setMaterialList(materialMapper.materialsToMaterialDTOs(materials));
+			
+		} catch (Exception e) {
+			
+			response.setStatusCode(500);
+			response.setMessage("Error al obtener los materiales: " + e.getMessage());
+		
+		}
+		
+		return response;
+	}
+	
+	
+}

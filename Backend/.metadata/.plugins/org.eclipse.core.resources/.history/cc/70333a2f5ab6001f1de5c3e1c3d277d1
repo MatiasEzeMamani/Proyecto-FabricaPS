@@ -1,0 +1,22 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+public class NameMaterialDTO {
+	
+	private String name;
+	private List<MaterialDTO> materialName;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<MaterialDTO> getMaterialName() {
+		return materialName;
+	}
+	public void setMaterialName(List<MaterialDTO> materialName) {
+		this.materialName = materialName;
+	}
+}

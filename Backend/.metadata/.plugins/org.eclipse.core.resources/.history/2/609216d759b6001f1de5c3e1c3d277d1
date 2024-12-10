@@ -1,0 +1,25 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+public class AbbreviationDTO {
+
+	private String name;
+	private List<MaterialDTO> materialAbbreviation;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<MaterialDTO> getMaterialAbbreviation() {
+		return materialAbbreviation;
+	}
+
+	public void setMaterialAbbreviation(List<MaterialDTO> materialAbbreviation) {
+		this.materialAbbreviation = materialAbbreviation;
+	}
+}

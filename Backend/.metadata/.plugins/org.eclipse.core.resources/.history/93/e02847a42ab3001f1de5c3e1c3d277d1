@@ -1,0 +1,10 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+import java.util.List;
+
+public class BrandDTO {
+
+	private String name;
+	
+	private List<MaterialDTO> materialBrand;
+}

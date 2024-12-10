@@ -1,0 +1,16 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Material;
+
+@Mapper(componentModel = "spring")
+public interface MaterialMapper {
+
+    MaterialDTO materialToMaterialDTO(Material material);
+
+    List<MaterialDTO> materialsToMaterialDTOs(List<Material> materials);
+}

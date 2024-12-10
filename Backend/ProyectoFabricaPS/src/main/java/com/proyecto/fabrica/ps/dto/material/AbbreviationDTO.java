@@ -1,0 +1,24 @@
+package com.proyecto.fabrica.ps.dto.material;
+
+public class AbbreviationDTO {
+
+	private Long abbreviationId;
+	
+	private String name;
+
+	public Long getAbbreviationId() {
+		return abbreviationId;
+	}
+
+	public void setAbbreviationId(Long abbreviationId) {
+		this.abbreviationId = abbreviationId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
