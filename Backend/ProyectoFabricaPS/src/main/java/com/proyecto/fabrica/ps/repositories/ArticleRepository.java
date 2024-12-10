@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.proyecto.fabrica.ps.models.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-
+	
+	boolean existsByCode(String Code);
 }

@@ -2,12 +2,13 @@ package com.proyecto.fabrica.ps.service.interfac;
 
 import com.proyecto.fabrica.ps.dto.Response;
 import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.models.Worker;
 
 public interface IArticleService {
-	
-	Response saveArticle(ArticleDTO articleDTO);
-    Response getArticleById(Long articleId);
-    Response getAllArticles();
-    Response deleteArticle(Long articleId);
 
+	Response addArticle(ArticleDTO articleDTO);
+	Response updatedArticle(Long id, ArticleDTO articleDTO);
+	Response deleteArticle(Long id, Worker currentUser);
+    Response getArticleById(Long id);
+    Response getAllArticles();
 }

@@ -9,6 +9,7 @@ import lombok.Data;
 public class BagDTO {
 	
 	private Long bagId;
+	
 	private String name;
 		
 	public BagDTO() {}

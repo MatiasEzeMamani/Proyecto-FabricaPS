@@ -1,0 +1,13 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+
+public interface IArticleService {
+
+	Response addArticle(ArticleDTO articleDTO);
+	Response updatedArticle(Long id, ArticleDTO articleDTO);
+	Response deleteArticle(Long articleId);
+    Response getArticleById(Long articleId);
+    Response getAllArticles();
+}

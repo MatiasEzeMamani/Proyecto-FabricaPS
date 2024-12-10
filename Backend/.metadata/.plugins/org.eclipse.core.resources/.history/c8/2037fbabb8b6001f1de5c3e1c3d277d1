@@ -1,0 +1,218 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.mapper.ArticleMapper;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Bag;
+import com.proyecto.fabrica.ps.models.Hose;
+import com.proyecto.fabrica.ps.models.Role;
+import com.proyecto.fabrica.ps.models.Screw;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.ArticleRepository;
+import com.proyecto.fabrica.ps.repositories.BagRepository;
+import com.proyecto.fabrica.ps.repositories.HoseRepository;
+import com.proyecto.fabrica.ps.repositories.ScrewRepository;
+import com.proyecto.fabrica.ps.service.interfac.IArticleService;
+
+@Service
+public class ArticleService implements IArticleService {
+
+	@Autowired
+	private ArticleRepository articleRepository;
+
+	@Autowired
+	private ArticleMapper articleMapper;
+
+	@Autowired
+	private BagRepository bagRepository;
+
+	@Autowired
+	private HoseRepository hoseRepository;
+
+	@Autowired
+	private ScrewRepository screwRepository;
+
+	@Override
+	public Response addArticle(ArticleDTO articleDTO) {
+
+		Response response = new Response();
+
+		try {
+
+			if (articleRepository.existsByCode(articleDTO.getCode())) {
+				throw new OurException("El articulo con el codigo " + articleDTO.getCode() + " ya esta registrada.");
+			}
+
+			Article article = new Article();
+			article.setCode(articleDTO.getCode());
+			article.setName(articleDTO.getName());
+			article.setToluene(articleDTO.isToluene());
+			article.setSpring(articleDTO.isSpring());
+
+			Bag bag = bagRepository.findById(articleDTO.getBag().getBagId()).orElseThrow(
+					() -> new OurException("Bolsa no encontrada con ID: " + articleDTO.getBag().getBagId()));
+			article.setBag(bag);
+
+			Hose hose = hoseRepository.findById(articleDTO.getHose().getHoseId()).orElseThrow(
+					() -> new OurException("Manguera no encontrada con ID: " + articleDTO.getHose().getHoseId()));
+			article.setHose(hose);
+
+			Screw screw = screwRepository.findById(articleDTO.getScrew().getScrewId()).orElseThrow(
+					() -> new OurException("Tornillo no encontrado con ID: " + articleDTO.getScrew().getScrewId()));
+			article.setScrew(screw);
+
+			Article saveArticle = articleRepository.save(article);
+
+			response.setStatusCode(200);
+			response.setMessage("Articulo añadido exitosamente");
+			response.setArticle(articleMapper.articleToArticleDTO(saveArticle));
+
+		} catch (OurException e) {
+
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al añadir el articulo: " + e.getMessage());
+
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response updatedArticle(Long id, ArticleDTO articleDTO) {
+
+		Response response = new Response();
+
+		try {
+			
+			Article article = articleRepository.findById(id)
+					.orElseThrow(() -> new OurException("Articulo no encontrado con ID: " + id));
+			
+			article.setCode(articleDTO.getCode());
+			article.setName(articleDTO.getName());
+			article.setToluene(articleDTO.isToluene());
+			article.setSpring(articleDTO.isSpring());
+
+			Bag bag = bagRepository.findById(articleDTO.getBag().getBagId()).orElseThrow(
+					() -> new OurException("Bolsa no encontrada con ID: " + articleDTO.getBag().getBagId()));
+			article.setBag(bag);
+
+			Hose hose = hoseRepository.findById(articleDTO.getHose().getHoseId()).orElseThrow(
+					() -> new OurException("Manguera no encontrada con ID: " + articleDTO.getHose().getHoseId()));
+			article.setHose(hose);
+
+			Screw screw = screwRepository.findById(articleDTO.getScrew().getScrewId()).orElseThrow(
+					() -> new OurException("Tornillo no encontrado con ID: " + articleDTO.getScrew().getScrewId()));
+			article.setScrew(screw);
+			
+			Article updatedArticle = articleRepository.save(article);
+			
+			response.setStatusCode(200);
+			response.setMessage("Articulo actualizado exitosamente");
+			response.setArticle(articleMapper.articleToArticleDTO(updatedArticle));
+			
+		} catch (OurException e) {
+
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al actualizar el articulo: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response deleteArticle(Long id, @AuthenticationPrincipal Worker currentUser) {
+		
+		Response response = new Response();
+
+		try {
+			
+			if (!currentUser.getRole().equals(Role.ADMINISTRATOR)) {
+				throw new OurException("No tienes permisos para eliminar articulos");
+			}
+			
+			if (!articleRepository.existsById(id)) {
+				throw new OurException("Articulo no encontrado con el ID: " + id);
+			}
+			
+			articleRepository.deleteById(id);
+			response.setStatusCode(200);
+			response.setMessage("Articulo eliminado exitosamente.");
+			
+		} catch (OurException e) {
+
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al eliminar el articulo: " + e.getMessage());
+
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getArticleById(Long id) {
+		
+		Response response = new Response();
+
+		try {
+			
+			Article article = articleRepository.findById(id)
+					.orElseThrow(() -> new OurException("Articulo no encontrado con ID: " + id));
+			
+			ArticleDTO articleDTO = articleMapper.articleToArticleDTO(article);
+			
+			response.setStatusCode(200);
+			response.setArticle(articleDTO);
+			
+		} catch (OurException e) {
+			
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al buscar el articulo: " + e.getMessage());
+			
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getAllArticles() {
+		
+		Response response = new Response();
+
+		try {
+
+		} catch (OurException e) {
+
+		} catch (Exception e) {
+
+		}
+
+		return response;
+	}
+
+}

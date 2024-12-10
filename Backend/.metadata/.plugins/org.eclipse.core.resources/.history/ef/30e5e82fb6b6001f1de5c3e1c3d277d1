@@ -1,0 +1,28 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.article.BagDTO;
+import com.proyecto.fabrica.ps.dto.article.ComponentPartDTO;
+import com.proyecto.fabrica.ps.dto.article.HoseDTO;
+import com.proyecto.fabrica.ps.dto.article.ScrewDTO;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Bag;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+import com.proyecto.fabrica.ps.models.Hose;
+import com.proyecto.fabrica.ps.models.Screw;
+
+@Mapper(componentModel = "spring")
+public interface ArticleMapper {
+
+	ArticleDTO articleToArticleDTO(Article article);
+	
+	BagDTO bagToBagDTO(Bag bag);
+
+	HoseDTO hoseToHoseDTO(Hose hose);
+	
+	ScrewDTO screwToScrewDTO(Screw screw);
+	
+	ComponentPartDTO componentPartToComponentPartDTO(ComponentPart componenetPart);
+}

@@ -1,0 +1,67 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.service.impl.ArticleService;
+
+@RestController
+@RequestMapping("/api/articles")
+public class ArticleController {
+	
+	@Autowired
+    private ArticleService articleService; // Inyectar el servicio de artículos
+	
+	@PostMapping("/add")
+	public ResponseEntity<Response> addArticle(@RequestBody ArticleDTO articleDTO){
+		
+		Response response = articleService.addArticle(articleDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<Response> getAllArticles(){
+		
+		Response response = articleService.getAllArticles();
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/{articleId}")
+	public ResponseEntity<Response> getArticleById(@PathVariable Long articleId){
+		
+		Response response = articleService.getArticleById(articleId);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@PutMapping("/edit/{materialId}")
+	public ResponseEntity<Response> updatedArticle(@PathVariable Long articleId, @RequestBody ArticleDTO articleDTO){
+		
+		Response response = articleService.updatedArticle(materialId, materialDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@DeleteMapping("/{materialId}")
+	public ResponseEntity<Response> deletePart(@PathVariable Long materialId, @AuthenticationPrincipal Worker currentUser){
+		
+		Response response = articleService.deleteArticle(materialId, currentUser);
+
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+}

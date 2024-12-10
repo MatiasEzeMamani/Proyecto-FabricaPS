@@ -9,7 +9,24 @@ import lombok.Data;
 public class ScrewDTO {
 
 	private Long screwId;
+	
 	private String name;
 	
 	public ScrewDTO() {}
+
+	public Long getScrewId() {
+		return screwId;
+	}
+
+	public void setScrewId(Long screwId) {
+		this.screwId = screwId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

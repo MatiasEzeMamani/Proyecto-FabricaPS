@@ -9,7 +9,24 @@ import lombok.Data;
 public class HoseDTO {
 	
 	private Long hoseId;
+	
 	private String name;
 	
 	public HoseDTO() {}
+
+	public Long getHoseId() {
+		return hoseId;
+	}
+
+	public void setHoseId(Long hoseId) {
+		this.hoseId = hoseId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

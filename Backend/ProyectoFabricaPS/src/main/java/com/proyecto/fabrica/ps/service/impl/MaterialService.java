@@ -103,6 +103,7 @@ public class MaterialService implements IMaterialService {
 
 			response.setStatusCode(500);
 			response.setMessage("Error al añadir el material: " + e.getMessage());
+		
 		}
 
 		return response;
@@ -168,12 +169,13 @@ public class MaterialService implements IMaterialService {
 
 	@Override
 	public Response deleteMaterial(Long id, @AuthenticationPrincipal Worker currentUser) {
+		
 		Response response = new Response();
 
 		try {
 
 			if (!currentUser.getRole().equals(Role.ADMINISTRATOR)) {
-				throw new OurException("No tienes permisos para eliminar trabajadores");
+				throw new OurException("No tienes permisos para eliminar materiales");
 			}
 
 			if (!materialRepository.existsById(id)) {
@@ -207,7 +209,7 @@ public class MaterialService implements IMaterialService {
 		try {
 
 			Material material = materialRepository.findById(id)
-					.orElseThrow(() -> new OurException("Pieza no encontrada con ID: " + id));
+					.orElseThrow(() -> new OurException("Material no encontrado con ID: " + id));
 
 			MaterialDTO materialDTO = materialMapper.materialToMaterialDTO(material);
 			response.setStatusCode(200);
@@ -222,6 +224,7 @@ public class MaterialService implements IMaterialService {
 
 			response.setStatusCode(500);
 			response.setMessage("Error al buscar el material: " + e.getMessage());
+		
 		}
 
 		return response;

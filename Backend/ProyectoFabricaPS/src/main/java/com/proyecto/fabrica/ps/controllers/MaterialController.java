@@ -58,7 +58,7 @@ public class MaterialController {
 	}
 	
 	@DeleteMapping("/{materialId}")
-	public ResponseEntity<Response> deletePart(@PathVariable Long materialId, @AuthenticationPrincipal Worker currentUser){
+	public ResponseEntity<Response> deleteMaterial(@PathVariable Long materialId, @AuthenticationPrincipal Worker currentUser){
 		
 		Response response = materialService.deleteMaterial(materialId, currentUser);
 		

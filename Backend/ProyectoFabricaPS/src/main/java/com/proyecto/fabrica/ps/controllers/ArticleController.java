@@ -1,8 +1,8 @@
 package com.proyecto.fabrica.ps.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,45 +14,53 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.fabrica.ps.dto.Response;
 import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
-import com.proyecto.fabrica.ps.service.interfac.IArticleService;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.service.impl.ArticleService;
 
 @RestController
 @RequestMapping("/api/articles")
 public class ArticleController {
+	
 	@Autowired
-    private IArticleService articleService; // Inyectar el servicio de artículos
+    private ArticleService articleService; // Inyectar el servicio de artículos
+	
+	@PostMapping("/add")
+	public ResponseEntity<Response> addArticle(@RequestBody ArticleDTO articleDTO){
+		
+		Response response = articleService.addArticle(articleDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<Response> getAllArticles(){
+		
+		Response response = articleService.getAllArticles();
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/{articleId}")
+	public ResponseEntity<Response> getArticleById(@PathVariable Long articleId){
+		
+		Response response = articleService.getArticleById(articleId);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@PutMapping("/edit/{articleId}")
+	public ResponseEntity<Response> updatedArticle(@PathVariable Long articleId, @RequestBody ArticleDTO articleDTO){
+		
+		Response response = articleService.updatedArticle(articleId, articleDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@DeleteMapping("/{articleId}")
+	public ResponseEntity<Response> deleteArticle(@PathVariable Long articleId, @AuthenticationPrincipal Worker currentUser){
+		
+		Response response = articleService.deleteArticle(articleId, currentUser);
 
-    @PostMapping
-    public ResponseEntity<Response> createArticle(@RequestBody ArticleDTO articleDTO) {
-        Response response = articleService.saveArticle(articleDTO);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Response> getArticleById(@PathVariable Long id) {
-        Response response = articleService.getArticleById(id);
-        return new ResponseEntity<>(response, response.getStatusCode() == 200 ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @GetMapping
-    public ResponseEntity<Response> getAllArticles() {
-        Response response = articleService.getAllArticles();
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Response> deleteArticle(@PathVariable Long id) {
-        Response response = articleService.deleteArticle(id);
-        return new ResponseEntity<>(response, response.getStatusCode() == 200 ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Response> updateArticle(@PathVariable Long id, @RequestBody ArticleDTO articleDTO) {
-        // Aquí, podrías necesitar implementar un método en tu servicio para actualizar el artículo.
-        // Para este ejemplo, asumiré que ya tienes un método para actualizar un artículo.
-        
-        articleDTO.setArticleId(id); // Asegúrate de establecer el ID del artículo en el DTO
-        Response response = articleService.saveArticle(articleDTO); // Usar el método de guardar para actualizar
-        return new ResponseEntity<>(response, response.getStatusCode() == 200 ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
 }

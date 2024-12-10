@@ -1,0 +1,47 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.service.impl.ArticleService;
+
+@RestController
+@RequestMapping("/api/articles")
+public class ArticleController {
+	
+	@Autowired
+    private ArticleService articleService; // Inyectar el servicio de artículos
+	
+	@PostMapping("/add")
+	public ResponseEntity<Response> addArticle(@RequestBody ArticleDTO articleDTO){
+		
+		Response response = articleService.addArticle(articleDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<Response> getAllArticles(){
+		
+		Response response = articleService.getAllArticles();
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+	@GetMapping("/{materialId}")
+	public ResponseEntity<Response> getMaterialById(@PathVariable Long materialId){
+		
+		Response response = materialService.getMaterialById(materialId);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+	
+}
