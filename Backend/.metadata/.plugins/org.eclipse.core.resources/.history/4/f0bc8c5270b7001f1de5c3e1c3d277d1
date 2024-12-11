@@ -1,0 +1,14 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.Part;
+
+public class ComponentPartDTO {
+
+
+	private Long componentHasPartId;	
+
+	private Component component;
+
+	private Part part;
+}

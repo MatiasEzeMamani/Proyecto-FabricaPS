@@ -1,0 +1,6 @@
+package com.proyecto.fabrica.ps.dto;
+
+public class ComponentPartDTO {
+
+	
+}

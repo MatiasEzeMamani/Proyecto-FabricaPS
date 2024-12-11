@@ -1,0 +1,162 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.ComponentDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.mapper.ComponentMapper;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.Role;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.service.interfac.IComponentService;
+
+@Service
+public class ComponentService implements IComponentService {
+
+	@Autowired
+	private ComponentRepository componentRepository;
+	
+	@Autowired
+	private ComponentMapper componentMapper;
+	
+	@Override
+	public Response addComponent(ComponentDTO componentDTO) {
+		
+		Response response = new Response();
+
+		try {
+			
+			Component component = new Component();
+			
+			component.setName(componentDTO.getName());
+			
+			Component saveComponent = componentRepository.save(component);
+			
+			response.setStatusCode(200);
+			response.setMessage("Componente añadido exitosamente");
+			response.setComponent(componentMapper.componentToComponentDTO(saveComponent));
+
+		} catch(OurException e){
+			
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+			
+		} catch(Exception e) {
+			
+			response.setStatusCode(500);
+			response.setMessage("Error al añadir el componente: " + e.getMessage());
+			
+		}
+		
+		return response;
+	}
+
+	@Override
+	public Response updatedComponent(Long id, ComponentDTO componentDTO) {
+		
+		Response response = new Response();
+		
+		try {
+			
+			Component component = componentRepository.findById(id)
+					.orElseThrow(() -> new OurException("Componente no encontrado con ID: " + id));
+			
+			component.setName(componentDTO.getName());
+			
+			Component updatedComponent = componentRepository.save(component);
+			
+			response.setStatusCode(200);
+			response.setMessage("Componente actualizado exitosamente");
+			response.setComponent(componentMapper.componentToComponentDTO(updatedComponent));
+			
+		} catch(OurException e) {
+			
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+		
+		} catch(Exception e) {
+			
+			response.setStatusCode(500);
+			response.setMessage("Error al actualizar el componente: " + e.getMessage());
+		
+		}
+		
+		return response;
+	}
+
+	@Override
+	public Response deleteComponent(Long id, Worker currentUser) {
+		
+		Response response = new Response();
+		
+try {
+			
+			if (!currentUser.getRole().equals(Role.ADMINISTRATOR)) {
+				throw new OurException("No tienes permisos para eliminar componentes");
+			}
+			
+			if (!componentRepository.existsById(id)) {
+				throw new OurException("Componente no encontrado con el ID: " + id);
+			}
+			
+			componentRepository.deleteById(id);
+			response.setStatusCode(200);
+			response.setMessage("Componente eliminado exitosamente.");
+			
+		} catch (OurException e) {
+
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al eliminar el componente: " + e.getMessage());
+
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getComponentById(Long id) {
+		
+		Response response = new Response();
+
+		try {
+			
+			Component component = componentRepository.findById(id)
+					.orElseThrow(() -> new OurException("Component no encontrado con ID: " + id));
+			
+			ComponentDTO componentDTO = componentMapper.componentToComponentDTO(component);
+			
+			response.setStatusCode(200);
+			response.setArticle(componentDTO);
+			
+		} catch (OurException e) {
+			
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+			
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al buscar el articulo: " + e.getMessage());
+			
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getAllComponents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

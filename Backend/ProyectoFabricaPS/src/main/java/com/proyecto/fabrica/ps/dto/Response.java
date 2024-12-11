@@ -22,7 +22,9 @@ public class Response {
     private ArticleDTO article;                 
     private WorkerDTO worker;
     private PartDTO part;
+    private ComponentDTO component;
     private MaterialDTO material;
+    private List<ComponentDTO> componentList;
     private List<PartDTO> partList;
     private List<ArticleDTO> articleList;
     private List<WorkerDTO> workerList;
@@ -105,5 +107,17 @@ public class Response {
 	}
 	public void setMaterial(MaterialDTO material) {
 		this.material = material;
+	}
+	public ComponentDTO getComponent() {
+		return component;
+	}
+	public void setComponent(ComponentDTO component) {
+		this.component = component;
+	}
+	public List<ComponentDTO> getComponents() {
+		return componentList;
+	}
+	public void setComponentList(List<ComponentDTO> componentList) {
+		this.componentList = componentList;
 	}
 }

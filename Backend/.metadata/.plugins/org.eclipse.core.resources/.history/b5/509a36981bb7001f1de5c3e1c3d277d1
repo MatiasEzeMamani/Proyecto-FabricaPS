@@ -1,0 +1,8 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ComponentService implements IComponentService {
+	
+}

@@ -1,0 +1,109 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Role;
+
+import lombok.Data;
+
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Response {
+	
+	private int statusCode;                     
+    private String message;
+    private String token;
+    private String expirationTime;
+    private Role role;
+    private ArticleDTO article;                 
+    private WorkerDTO worker;
+    private PartDTO part;
+    private MaterialDTO material;
+    private List<PartDTO> partList;
+    private List<ArticleDTO> articleList;
+    private List<WorkerDTO> workerList;
+    private List<MaterialDTO> materialList;
+    
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public ArticleDTO getArticle() {
+		return article;
+	}
+	public void setArticle(ArticleDTO article) {
+		this.article = article;
+	}
+	public List<ArticleDTO> getArticleList() {
+		return articleList;
+	}
+	public void setArticleList(List<ArticleDTO> articleList) {
+		this.articleList = articleList;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public WorkerDTO getWorker() {
+		return worker;
+	}
+	public void setWorker(WorkerDTO worker) {
+		this.worker = worker;
+	}
+	public String getExpirationTime() {
+		return expirationTime;
+	}
+	public void setExpirationTime(String expirationTime) {
+		this.expirationTime = expirationTime;
+	}
+	public List<WorkerDTO> getWorkerList() {
+		return workerList;
+	}
+	public void setWorkerList(List<WorkerDTO> workerList) {
+		this.workerList = workerList;
+	}
+	public PartDTO getPart() {
+		return part;
+	}
+	public void setPart(PartDTO part) {
+		this.part = part;
+	}
+	public List<PartDTO> getPartList() {
+		return partList;
+	}
+	public void setPartList(List<PartDTO> partList) {
+		this.partList = partList;
+	}
+	public List<MaterialDTO> getMaterialList() {
+		return materialList;
+	}
+	public void setMaterialList(List<MaterialDTO> materialList) {
+		this.materialList = materialList;
+	}
+	public MaterialDTO getMaterial() {
+		return material;
+	}
+	public void setMaterial(MaterialDTO material) {
+		this.material = material;
+	}
+}
