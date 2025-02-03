@@ -1,0 +1,35 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.proyecto.fabrica.ps.models.Component;
+
+public class ComponentStockDTO {
+	private int available_stock;
+
+	private int can_be_produced;
+
+	private Component component;
+
+	public int getAvailable_stock() {
+		return available_stock;
+	}
+
+	public void setAvailable_stock(int available_stock) {
+		this.available_stock = available_stock;
+	}
+
+	public int getCan_be_produced() {
+		return can_be_produced;
+	}
+
+	public void setCan_be_produced(int can_be_produced) {
+		this.can_be_produced = can_be_produced;
+	}
+
+	public Component getComponent() {
+		return component;
+	}
+
+	public void setComponent(Component component) {
+		this.component = component;
+	}
+}

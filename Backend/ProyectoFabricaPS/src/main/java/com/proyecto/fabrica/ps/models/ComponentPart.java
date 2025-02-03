@@ -39,6 +39,9 @@ public class ComponentPart {
 			)
 	private Article article;
 	
+	@Column(nullable = false)
+    private int quantityPerComponent;
+	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
@@ -70,6 +73,22 @@ public class ComponentPart {
 
 	public void setPart(Part part) {
 		this.part = part;
+	}
+	
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	public int getQuantityPerComponent() {
+		return quantityPerComponent;
+	}
+
+	public void setQuantityPerComponent(int quantityPerComponent) {
+		this.quantityPerComponent = quantityPerComponent;
 	}
 
 	public Date getCreatedAt() {

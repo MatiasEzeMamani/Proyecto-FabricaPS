@@ -7578,3 +7578,309 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+!SESSION 2025-01-30 18:17:51.027 -----------------------------------------------
+eclipse.buildId=4.22.1.202405011620
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_419
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 C:\Users\Matias Mamani\Desktop\CodingDojo-Project\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4 C:\Users\Matias Mamani\Desktop\CodingDojo-Project\.project
+
+!ENTRY org.eclipse.emf.ecore 2 0 2025-01-30 18:19:04.927
+!MESSAGE Both 'org.eclipse.jst.j2ee.core' and 'org.eclipse.jst.j2ee.core' register a package for 'application.xmi'
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-30 18:19:05.364
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-01-30 18:19:13.436
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-30 18:19:14.422
+!MESSAGE Logback config file: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-01-30 18:19:15.207
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-01-30 18:19:15.207
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-01-30 18:19:15.817
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-01-30 18:19:15.817
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2025-01-30 18:19:23.982
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Users\Matias Mamani\Desktop\Bootcamp\Java-Experie\Nueva carpeta\sts-4.22.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.11.v20240426-1830\jre\bin\javaw.exe
+-cp
+C:\Users\Matias Mamani\Desktop\Bootcamp\Java-Experie\Nueva carpeta\sts-4.22.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.54.0.202405011602\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\Matias Mamani\Desktop\Bootcamp\Java-Experie\Nueva carpeta\sts-4.22.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.54.0.202405011602\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Xmx1024m
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\Matias Mamani\Desktop\Bootcamp\Java-Experie\Nueva carpeta\sts-4.22.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.54.0.202405011602\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=C:/Users/Matias Mamani/Desktop/Proyecto Pino/ProyectoFabrica_PS/Backend/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1738271963980
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-30 18:19:23.984
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2025-01-30 18:19:24.021
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 11852
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-01-30 18:19:25.591
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Matias Mamani'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-30 18:19:25.885
+!MESSAGE Boot project ADDED: ProyectoFabricaPS
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-30 18:19:25.887
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-30 18:19:25.892
+!MESSAGE Started Boot LS process
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2025-01-30 18:19:27.237
+!MESSAGE Unable to delete derived resource L/ProyectoFabricaPS/target/generated-sources/annotations/com/proyecto/fabrica/ps/mapper/ArticleMapperImpl.java
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:816)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:772)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteResource(FileSystemUtil.java:85)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:70)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.AptProject.projectClean(AptProject.java:116)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.cleanStarting(AptCompilationParticipant.java:234)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:65)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:286)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Could not delete 'C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java'.
+org.eclipse.core.runtime.CoreException: Could not delete: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:161)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:315)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:801)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1826)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:772)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteResource(FileSystemUtil.java:85)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:70)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.AptProject.projectClean(AptProject.java:116)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.cleanStarting(AptCompilationParticipant.java:234)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:65)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:286)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.nio.file.FileSystemException: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java: El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.deleteIfExists(AbstractFileSystemProvider.java:110)
+	at java.base/java.nio.file.Files.deleteIfExists(Files.java:1191)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.internalDelete(LocalFile.java:242)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:159)
+	... 31 more
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2025-01-30 18:19:27.240
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2025-01-30 18:19:27.240
+!MESSAGE Could not delete 'C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not delete: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:161)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:315)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:801)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1826)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:772)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteResource(FileSystemUtil.java:85)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:70)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.AptProject.projectClean(AptProject.java:116)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.cleanStarting(AptCompilationParticipant.java:234)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:65)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:286)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.nio.file.FileSystemException: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java: El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.deleteIfExists(AbstractFileSystemProvider.java:110)
+	at java.base/java.nio.file.Files.deleteIfExists(Files.java:1191)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.internalDelete(LocalFile.java:242)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:159)
+	... 31 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2025-01-30 18:19:27.242
+!MESSAGE Could not delete: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java.
+!STACK 0
+java.nio.file.FileSystemException: C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica_PS\Backend\ProyectoFabricaPS\target\generated-sources\annotations\com\proyecto\fabrica\ps\mapper\ArticleMapperImpl.java: El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.deleteIfExists(AbstractFileSystemProvider.java:110)
+	at java.base/java.nio.file.Files.deleteIfExists(Files.java:1191)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.internalDelete(LocalFile.java:242)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:159)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:315)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:801)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1826)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:772)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteResource(FileSystemUtil.java:85)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:70)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.util.FileSystemUtil.deleteDerivedResources(FileSystemUtil.java:60)
+	at org.eclipse.jdt.apt.core.internal.AptProject.projectClean(AptProject.java:116)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.cleanStarting(AptCompilationParticipant.java:234)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:65)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:286)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-01-31 17:13:48.748
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-31 17:25:02.708
+!MESSAGE Classpath changed for project: ProyectoFabricaPS
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-02-02 14:19:55.624
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-02-02 14:20:05.020
+!MESSAGE Unable to compute end of document
+!STACK 0
+org.eclipse.jface.text.BadLocationException: 3066
+	at org.eclipse.jface.text.TreeLineTracker.lineByOffset(TreeLineTracker.java:268)
+	at org.eclipse.jface.text.TreeLineTracker.getLineNumberOfOffset(TreeLineTracker.java:1112)
+	at org.eclipse.jface.text.AbstractLineTracker.getLineNumberOfOffset(AbstractLineTracker.java:246)
+	at org.eclipse.jface.text.AbstractDocument.getLineOfOffset(AbstractDocument.java:863)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.getLineOfOffset(SynchronizableDocument.java:334)
+	at org.eclipse.lsp4e.LSPEclipseUtils.toPosition(LSPEclipseUtils.java:193)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:44)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:80)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.lambda$2(CodeMiningManager.java:189)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.getCodeMinings(CodeMiningManager.java:195)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.updateCodeMinings(CodeMiningManager.java:140)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.run(CodeMiningManager.java:129)
+	at org.eclipse.jface.text.source.SourceViewer.updateCodeMinings(SourceViewer.java:1333)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaCodeMiningReconciler.reconciled(JavaCodeMiningReconciler.java:51)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.reconciled(CompilationUnitEditor.java:1685)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconciled(JavaReconcilingStrategy.java:228)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconciled(JavaCompositeReconcilingStrategy.java:171)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:115)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-02-03 16:18:10.054
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)

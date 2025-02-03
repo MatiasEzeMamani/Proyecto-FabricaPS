@@ -1,0 +1,9 @@
+package com.proyecto.fabrica.ps.mapper;
+
+@Mapper(componentModel = "spring")
+public interface ComponentStockMapper {
+	
+	ComponentStockDTO componentToComponentStockDTO(Component component);
+
+	List<ComponentStockDTO> componentsToComponentStockDTOs(List<Component> components);
+}

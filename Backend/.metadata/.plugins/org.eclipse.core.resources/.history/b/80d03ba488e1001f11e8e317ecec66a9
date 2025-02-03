@@ -1,0 +1,15 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+import com.proyecto.fabrica.ps.dto.ComponentDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.models.Worker;
+
+public class IComponentPartService {
+	
+	Response addComponent(ComponentDTO componentDTO);
+	Response updatedComponent(Long id, ComponentDTO componentDTO);
+	Response deleteComponent(Long id, Worker currentUser);
+    Response getComponentById(Long id);
+    Response getAllComponents();
+    
+}

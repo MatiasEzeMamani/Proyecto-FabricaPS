@@ -1,0 +1,23 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.dto.ComponentDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+
+@RestController
+@RequestMapping("/api/component-part")
+public class ComponentPartController {
+
+	@PostMapping("/add")
+	public ResponseEntity<Response> addComponent(@RequestBody ComponentDTO componentDTO){
+		
+		Response response = componentService.addComponent(componentDTO);
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+}

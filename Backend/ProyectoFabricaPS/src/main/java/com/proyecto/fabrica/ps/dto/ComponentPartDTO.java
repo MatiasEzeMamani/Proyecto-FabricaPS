@@ -5,7 +5,6 @@ import com.proyecto.fabrica.ps.models.Part;
 
 public class ComponentPartDTO {
 
-
 	private Long componentHasPartId;	
 
 	private Component component;
@@ -22,7 +21,7 @@ public class ComponentPartDTO {
 
 	public Component getComponent() {
 		return component;
-	}
+	}	
 
 	public void setComponent(Component component) {
 		this.component = component;

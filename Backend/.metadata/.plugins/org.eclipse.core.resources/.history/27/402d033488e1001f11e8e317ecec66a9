@@ -1,0 +1,38 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.Part;
+
+public class ComponentPartDTO {
+
+
+	private Long componentHasPartId;	
+
+	private Component component;
+
+	private Part part;
+
+	public Long getComponentHasPartId() {
+		return componentHasPartId;
+	}
+
+	public void setComponentHasPartId(Long componentHasPartId) {
+		this.componentHasPartId = componentHasPartId;
+	}
+
+	public Component getComponent() {
+		return component;
+	}	
+
+	public void setComponent(Component component) {
+		this.component = component;
+	}
+
+	public Part getPart() {
+		return part;
+	}
+
+	public void setPart(Part part) {
+		this.part = part;
+	}
+}

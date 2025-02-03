@@ -1,0 +1,13 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.article.ComponentPartDTO;
+import com.proyecto.fabrica.ps.models.ComponentPart;
+
+@Mapper(componentModel = "spring")
+public interface ComponentPartMapper {
+	
+	ComponentPartDTO componentPartToComponentPartDTO(ComponentPart componentPart);
+
+}

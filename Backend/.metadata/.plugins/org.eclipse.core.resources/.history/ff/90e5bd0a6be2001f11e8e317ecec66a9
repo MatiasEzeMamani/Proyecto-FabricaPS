@@ -1,0 +1,42 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.service.impl.ComponentPartService;
+
+@RestController
+@RequestMapping("/api/component-part")
+public class ComponentPartController {
+	
+	@Autowired
+	private ComponentPartService componentPartService;
+
+	@PostMapping("/add")
+    public ResponseEntity<Response> addComponentPart(
+            @RequestParam Long componentId,
+            @RequestParam Long partId,
+            @RequestParam int quantity) {
+        Response response = componentPartService.addComponentPart(componentId, partId, quantity);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+	
+	@GetMapping("/")
+	public ResponseEntity<Response> getAllComponentsParts(){
+		
+		Response response = componentPartService.getAllComponentsParts();
+		
+		return ResponseEntity.status(response.getStatusCode()).body(response);
+	
+	}
+	
+	@GetMapping("/component/{componentId}")
+	public ResponseEntity<Response> getComponentPartByComponent(){
+		
+}

@@ -1,0 +1,43 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import com.proyecto.fabrica.ps.dto.ComponentStockDTO;
+import com.proyecto.fabrica.ps.models.Component;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-01-23T13:51:09-0300",
+    comments = "version: 1.5.2.Final, compiler: Eclipse JDT (IDE) 3.37.0.v20240215-1558, environment: Java 17.0.11 (Eclipse Adoptium)"
+)
+@org.springframework.stereotype.Component
+public class ComponentStockMapperImpl implements ComponentStockMapper {
+
+    @Override
+    public ComponentStockDTO componentToComponentStockDTO(Component component) {
+        if ( component == null ) {
+            return null;
+        }
+
+        ComponentStockDTO componentStockDTO = new ComponentStockDTO();
+
+        componentStockDTO.setComponent( component );
+
+        return componentStockDTO;
+    }
+
+    @Override
+    public List<ComponentStockDTO> componentsToComponentStockDTOs(List<Component> components) {
+        if ( components == null ) {
+            return null;
+        }
+
+        List<ComponentStockDTO> list = new ArrayList<ComponentStockDTO>( components.size() );
+        for ( Component component : components ) {
+            list.add( componentToComponentStockDTO( component ) );
+        }
+
+        return list;
+    }
+}
