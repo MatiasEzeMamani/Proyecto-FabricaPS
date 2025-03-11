@@ -1,0 +1,29 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+
+@Mapper(componentModel = "spring")
+public interface MovementDetailMapper {
+	
+	@Mapping(source = "originWarehouse.id", target = "originWarehouseId", qualifiedByName = "mapId")
+    @Mapping(source = "destinationWarehouse.id", target = "destinationWarehouseId", qualifiedByName = "mapId")
+    @Mapping(source = "part.id", target = "partId", qualifiedByName = "mapId")
+    @Mapping(source = "component.id", target = "componentId", qualifiedByName = "mapId")
+    @Mapping(source = "article.id", target = "articleId", qualifiedByName = "mapId")
+    @Mapping(source = "worker.id", target = "workerId", qualifiedByName = "mapId")
+    MovementDetailDTO movementDetailToMovementDetailDTO(MovementDetail movementDetail);
+
+    List<MovementDetailDTO> movementDetailsToMovementDetailDTOs(List<MovementDetail> movementDetails); 
+
+    @Named("mapId")
+    default Integer mapId(Object entity) {
+        return entity != null ? (Integer) entity.getClass().getMethod("getId").invoke(entity) : null;
+    }
+}

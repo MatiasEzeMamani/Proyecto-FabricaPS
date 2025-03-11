@@ -1,0 +1,103 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Stock;
+import com.proyecto.fabrica.ps.models.Warehouse;
+import com.proyecto.fabrica.ps.repositories.StockRepository;
+import com.proyecto.fabrica.ps.service.interfac.IStockService;
+
+@Service
+public class StockService implements IStockService {
+
+    @Autowired
+    private StockRepository stockRepository;
+
+    @Transactional
+    public Response updateStock(MovementDetail movementDetail, Warehouse origin, Warehouse destination) {
+        Response response = new Response();
+
+        // Actualizamos el stock del almacén de origen (restando la cantidad)
+        Optional<Stock> originStock = stockRepository.findByWarehouseAndPart(origin, movementDetail.getPart());
+        if (originStock.isPresent()) {
+            Stock stock = originStock.get();
+            stock.setQuantity(stock.getQuantity() - movementDetail.getQuantity());
+            stockRepository.save(stock);
+        }
+
+        // Actualizamos el stock del almacén de destino (sumando la cantidad)
+        Optional<Stock> destinationStock = stockRepository.findByWarehouseAndPart(destination, movementDetail.getPart());
+        if (destinationStock.isPresent()) {
+            Stock stock = destinationStock.get();
+            stock.setQuantity(stock.getQuantity() + movementDetail.getQuantity());
+            stockRepository.save(stock);
+        } else {
+            // Si no existe stock en el almacén de destino, creamos uno nuevo
+            Stock newStock = new Stock();
+            newStock.setWarehouse(destination);
+            newStock.setPart(movementDetail.getPart());
+            newStock.setQuantity(movementDetail.getQuantity());
+            stockRepository.save(newStock);
+        }
+
+        // Respuesta de stock
+        response.setStatusCode(200);
+        response.setMessage("Stock actualizado correctamente");
+        return response;
+    }
+
+    // Método auxiliar para obtener el stock en base al almacén y tipo de ítem
+    private Stock findStockByWarehouseAndItem(Warehouse warehouse, MovementDetail movementDetail) {
+        Stock stock = null;
+
+        // Verificamos cuál es el tipo de ítem que se pasa en el MovementDetail
+        if (movementDetail.getPart() != null) {
+            stock = stockRepository.findByWarehouseAndPart(warehouse, movementDetail.getPart());
+        } else if (movementDetail.getArticle() != null) {
+            stock = stockRepository.findByWarehouseAndArticle(warehouse, movementDetail.getArticle());
+        } else if (movementDetail.getComponent() != null) {
+            stock = stockRepository.findByWarehouseAndComponent(warehouse, movementDetail.getComponent());
+        }
+
+        return stock;
+    }
+
+    // Método auxiliar para actualizar la cantidad del stock (suma o resta según corresponda)
+    private Stock updateStockQuantity(Stock stock, int quantity, boolean isAdding) {
+        int newQuantity = isAdding ? stock.getQuantity() + quantity : stock.getQuantity() - quantity;
+
+        if (newQuantity < 0) {
+            throw new OurException("No hay suficiente stock en el almacén.");
+        }
+        
+        stock.setQuantity(newQuantity);
+        return stock;
+    }
+
+    // Método para crear un nuevo stock si no existe
+    private Stock createNewStock(Warehouse warehouse, MovementDetail movementDetail) {
+        Stock newStock = new Stock();
+        newStock.setWarehouse(warehouse);
+        setStockItem(newStock, movementDetail);
+        newStock.setQuantity(0);  // Set initial quantity to 0
+        return newStock;
+    }
+
+    // Método auxiliar para asignar el tipo de ítem al stock (sin repetir el código)
+    private void setStockItem(Stock stock, MovementDetail movementDetail) {
+        if (movementDetail.getPart() != null) {
+            stock.setPart(movementDetail.getPart());
+        } else if (movementDetail.getArticle() != null) {
+            stock.setArticle(movementDetail.getArticle());
+        } else if (movementDetail.getComponent() != null) {
+            stock.setComponent(movementDetail.getComponent());
+        }
+    }
+}

@@ -1,0 +1,12 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+
+public interface MovementDetailMapper {
+	
+	MovementDetailDTO movementDetailToMovementDetailDTO(MovementDetail movementDetail);
+	
+	
+	
+}

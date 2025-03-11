@@ -1,0 +1,17 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Warehouse;
+import com.proyecto.fabrica.ps.models.Worker;
+
+public interface IMovementDetailService {
+
+	Response addMovementDetail(MovementDetailDTO movementDetailDTO, Worker currentUser);
+	Response updateMovementDetail(Long id, MovementDetailDTO movementDetailDTO);
+	Response deleteMovementDetail(Long id, Worker currentUser);
+	Response getMovementDetailById(Long id);
+	Response getAllMovementDetails();
+
+}

@@ -26,6 +26,10 @@ public class Response {
     private ComponentDTO component;
     private ComponentPartDTO componentPart;
     private MaterialDTO material;
+    private MovementDetailDTO movementDetail;
+    private StockDTO stock;
+    private List<StockDTO> stockList;
+    private List<MovementDetailDTO> movementDetailList;
     private List<ComponentPartDTO> componentPartList;
     private List<ComponentStockDTO> componentStockList;
     private List<ComponentDTO> componentList;
@@ -34,6 +38,13 @@ public class Response {
     private List<WorkerDTO> workerList;
     private List<MaterialDTO> materialList;
     
+	public Response(int statusCode, String message) {
+		this.statusCode = statusCode;
+        this.message = message;
+	}
+	public Response() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getStatusCode() {
 		return statusCode;
 	}
@@ -150,5 +161,29 @@ public class Response {
 	}
 	public void setComponentPartList(List<ComponentPartDTO> componentPartList) {
 		this.componentPartList = componentPartList;
+	}
+	public MovementDetailDTO getMovementDetail() {
+		return movementDetail;
+	}
+	public void setMovementDetail(MovementDetailDTO movementDetail) {
+		this.movementDetail = movementDetail;
+	}
+	public List<MovementDetailDTO> getMovementDetailList() {
+		return movementDetailList;
+	}
+	public void setMovementDetailList(List<MovementDetailDTO> movementDetailList) {
+		this.movementDetailList = movementDetailList;
+	}
+	public StockDTO getStock() {
+		return stock;
+	}
+	public void setStock(StockDTO stock) {
+		this.stock = stock;
+	}
+	public List<StockDTO> getStockList() {
+		return stockList;
+	}
+	public void setStockList(List<StockDTO> stockList) {
+		this.stockList = stockList;
 	}
 }

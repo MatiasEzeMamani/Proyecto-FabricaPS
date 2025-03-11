@@ -1,0 +1,131 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Stock;
+import com.proyecto.fabrica.ps.models.Warehouse;
+import com.proyecto.fabrica.ps.repositories.ArticleRepository;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.repositories.PartRepository;
+import com.proyecto.fabrica.ps.repositories.StockRepository;
+import com.proyecto.fabrica.ps.repositories.WarehouseRepository;
+
+@Service
+public class StockService {
+
+    @Autowired
+    private PartRepository partRepository;
+
+    @Autowired
+    private ArticleRepository articleRepository;
+
+    @Autowired
+    private ComponentRepository componentRepository;
+
+    @Autowired
+    private WarehouseRepository warehouseRepository;
+
+    @Autowired
+    private StockRepository stockRepository; // Asumiendo que tienes un repositorio de Stock para almacenar la cantidad de inventario
+
+    // Método para actualizar el stock después de un movimiento
+    public Response updateStock(MovementDetail movementDetail, Warehouse origin, Warehouse destination) {
+        Response response = new Response();
+
+        try {
+            // Obtenemos las entidades involucradas en el movimiento
+            Part part = movementDetail.getPart();
+            Article article = movementDetail.getArticle();
+            Component component = movementDetail.getComponent();
+
+            // Verificamos el tipo de movimiento (por ejemplo, entrada o salida)
+            boolean isOutMovement = movementDetail.getTypeMovementWarehouse().equals("OUT");
+
+            // Actualizamos el stock en el almacén de origen
+            if (origin != null) {
+                if (part != null) {
+                    updateStockInWarehouse(origin, part, isOutMovement, movementDetail.getQuantity());
+                } else if (article != null) {
+                    updateStockInWarehouse(origin, article, isOutMovement, movementDetail.getQuantity());
+                } else if (component != null) {
+                    updateStockInWarehouse(origin, component, isOutMovement, movementDetail.getQuantity());
+                }
+            }
+
+            // Actualizamos el stock en el almacén de destino
+            if (destination != null) {
+                if (part != null) {
+                    updateStockInWarehouse(destination, part, !isOutMovement, movementDetail.getQuantity());
+                } else if (article != null) {
+                    updateStockInWarehouse(destination, article, !isOutMovement, movementDetail.getQuantity());
+                } else if (component != null) {
+                    updateStockInWarehouse(destination, component, !isOutMovement, movementDetail.getQuantity());
+                }
+            }
+
+            response.setStatusCode(200);
+            response.setMessage("Stock actualizado correctamente.");
+        } catch (OurException e) {
+            response.setStatusCode(400);
+            response.setMessage(e.getMessage());
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error al actualizar el stock: " + e.getMessage());
+        }
+
+        return response;
+    }
+
+    // Método auxiliar para actualizar el stock de una entidad en un almacén
+    private void updateStockInWarehouse(Warehouse warehouse, Part part, boolean isOutMovement, int quantity) {
+        // Lógica para actualizar el stock de partes en el almacén
+        // Asumimos que la clase Stock tiene una relación con Warehouse y Part
+        Stock stock = stockRepository.findByWarehouseAndPart(warehouse, part)
+                .orElseThrow(() -> new OurException("Stock no encontrado para la parte en el almacén"));
+
+        if (isOutMovement) {
+            // Si el movimiento es de salida, restamos la cantidad
+            stock.setQuantity(stock.getQuantity() - quantity);
+        } else {
+            // Si el movimiento es de entrada, sumamos la cantidad
+            stock.setQuantity(stock.getQuantity() + quantity);
+        }
+
+        stockRepository.save(stock);
+    }
+
+    private void updateStockInWarehouse(Warehouse warehouse, Article article, boolean isOutMovement, int quantity) {
+        // Lógica similar a la de la parte para artículos
+        Stock stock = stockRepository.findByWarehouseAndArticle(warehouse, article)
+                .orElseThrow(() -> new OurException("Stock no encontrado para el artículo en el almacén"));
+
+        if (isOutMovement) {
+            stock.setQuantity(stock.getQuantity() - quantity);
+        } else {
+            stock.setQuantity(stock.getQuantity() + quantity);
+        }
+
+        stockRepository.save(stock);
+    }
+
+    private void updateStockInWarehouse(Warehouse warehouse, Component component, boolean isOutMovement, int quantity) {
+        // Lógica similar a la de la parte para componentes
+        Stock stock = stockRepository.findByWarehouseAndComponent(warehouse, component)
+                .orElseThrow(() -> new OurException("Stock no encontrado para el componente en el almacén"));
+
+        if (isOutMovement) {
+            stock.setQuantity(stock.getQuantity() - quantity);
+        } else {
+            stock.setQuantity(stock.getQuantity() + quantity);
+        }
+
+        stockRepository.save(stock);
+    }
+}

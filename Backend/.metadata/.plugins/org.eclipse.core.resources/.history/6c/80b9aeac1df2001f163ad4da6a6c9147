@@ -1,0 +1,179 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.proyecto.fabrica.ps.dto.article.ArticleDTO;
+import com.proyecto.fabrica.ps.dto.material.MaterialDTO;
+import com.proyecto.fabrica.ps.models.Role;
+
+import lombok.Data;
+
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Response {
+	
+	private int statusCode;                     
+    private String message;
+    private String token;
+    private String expirationTime;
+    private Role role;
+    private ArticleDTO article;                 
+    private WorkerDTO worker;
+    private PartDTO part;
+    private ComponentStockDTO componentStock;
+    private ComponentDTO component;
+    private ComponentPartDTO componentPart;
+    private MaterialDTO material;
+    private MovementDetailDTO movementDetail;
+    private List<MovementDetailDTO> movementDetailList;
+    private List<ComponentPartDTO> componentPartList;
+    private List<ComponentStockDTO> componentStockList;
+    private List<ComponentDTO> componentList;
+    private List<PartDTO> partList;
+    private List<ArticleDTO> articleList;
+    private List<WorkerDTO> workerList;
+    private List<MaterialDTO> materialList;
+    
+	public Response(int statusCode, String message) {
+		this.statusCode = statusCode;
+        this.message = message;
+	}
+	public Response() {
+		// TODO Auto-generated constructor stub
+	}
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public ArticleDTO getArticle() {
+		return article;
+	}
+	public void setArticle(ArticleDTO article) {
+		this.article = article;
+	}
+	public List<ArticleDTO> getArticleList() {
+		return articleList;
+	}
+	public void setArticleList(List<ArticleDTO> articleList) {
+		this.articleList = articleList;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public WorkerDTO getWorker() {
+		return worker;
+	}
+	public void setWorker(WorkerDTO worker) {
+		this.worker = worker;
+	}
+	public String getExpirationTime() {
+		return expirationTime;
+	}
+	public void setExpirationTime(String expirationTime) {
+		this.expirationTime = expirationTime;
+	}
+	public List<WorkerDTO> getWorkerList() {
+		return workerList;
+	}
+	public void setWorkerList(List<WorkerDTO> workerList) {
+		this.workerList = workerList;
+	}
+	public PartDTO getPart() {
+		return part;
+	}
+	public void setPart(PartDTO part) {
+		this.part = part;
+	}
+	public List<PartDTO> getPartList() {
+		return partList;
+	}
+	public void setPartList(List<PartDTO> partList) {
+		this.partList = partList;
+	}
+	public List<MaterialDTO> getMaterialList() {
+		return materialList;
+	}
+	public void setMaterialList(List<MaterialDTO> materialList) {
+		this.materialList = materialList;
+	}
+	public MaterialDTO getMaterial() {
+		return material;
+	}
+	public void setMaterial(MaterialDTO material) {
+		this.material = material;
+	}
+	public ComponentDTO getComponent() {
+		return component;
+	}
+	public void setComponent(ComponentDTO component) {
+		this.component = component;
+	}
+	public List<ComponentDTO> getComponents() {
+		return componentList;
+	}
+	public void setComponentList(List<ComponentDTO> componentList) {
+		this.componentList = componentList;
+	}
+	public ComponentStockDTO getComponentStock() {
+		return componentStock;
+	}
+	public void setComponentStock(ComponentStockDTO componentStock) {
+		this.componentStock = componentStock;
+	}
+	public List<ComponentStockDTO> getComponentStockList() {
+		return componentStockList;
+	}
+	public void setComponentStockList(List<ComponentStockDTO> componentStockList) {
+		this.componentStockList = componentStockList;
+	}
+	public List<ComponentDTO> getComponentList() {
+		return componentList;
+	}
+	public ComponentPartDTO getComponentPart() {
+		return componentPart;
+	}
+	public void setComponentPart(ComponentPartDTO componentPart) {
+		this.componentPart = componentPart;
+	}
+	public List<ComponentPartDTO> getComponentPartList() {
+		return componentPartList;
+	}
+	public void setComponentPartList(List<ComponentPartDTO> componentPartList) {
+		this.componentPartList = componentPartList;
+	}
+	public MovementDetailDTO getMovementDetail() {
+		return movementDetail;
+	}
+	public void setMovementDetail(MovementDetailDTO movementDetail) {
+		this.movementDetail = movementDetail;
+	}
+	public List<MovementDetailDTO> getMovementDetailList() {
+		return movementDetailList;
+	}
+	public void setMovementDetailList(List<MovementDetailDTO> movementDetailList) {
+		this.movementDetailList = movementDetailList;
+	}
+	public void setStockResponse(Response stockResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+}

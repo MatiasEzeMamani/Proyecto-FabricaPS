@@ -1,0 +1,23 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.dto.PartDTO;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Warehouse;
+
+@Mapper(componentModel = "spring")
+public interface MovementDetailMapper {
+	
+	  MovementDetailDTO movementDetailToMovementDetailDTO(MovementDetail movementDetail);
+
+	    // Mapeo de las relaciones (si es necesario)
+	    WarehouseDTO warehouseToWarehouseDTO(Warehouse warehouse);
+	    PartDTO partToPartDTO(Part part);
+	List<MovementDetailDTO> movementDetailsToMovementDetailDTOs(List<MovementDetail> movementDetails); 
+	
+}

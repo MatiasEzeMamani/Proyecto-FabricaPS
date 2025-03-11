@@ -1,0 +1,7 @@
+package com.proyecto.fabrica.ps.controllers;
+
+@RestController
+@RequestMapping("/api/component-stock")
+public class ComponentStockController {
+
+}

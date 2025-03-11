@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,20 +34,32 @@ public class MovementDetail {
 	@Min(value = 1, message = "El número debe ser mayor que 0.")
 	private int quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "origin_worehouse_id")
-	private Worehouse origin;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "origin_warehouse_id")
+	private Warehouse origin;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "destination_worehouse_id")
-	private Worehouse destination;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "destination_warehouse_id")
+	private Warehouse destination;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "movement_worker_id")
-	private MovementWorker movementWorkerDetail;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "partId", nullable = true)
+	private Part part;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "componentId", nullable = true)
+	private Component component;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "articleId", nullable = true)
+	private Article article;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "worker_id", nullable = false)
+	private Worker worker;
 	
 	@Enumerated(EnumType.STRING)
-	private TypeMovementWorehouse typeMovementWorehouse;
+	private TypeMovementWarehouse typeMovementWarehouse;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -75,19 +86,19 @@ public class MovementDetail {
 		this.quantity = quantity;
 	}
 
-	public Worehouse getOrigin() {
+	public Warehouse getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(Worehouse origin) {
+	public void setOrigin(Warehouse origin) {
 		this.origin = origin;
 	}
 
-	public Worehouse getDestination() {
+	public Warehouse getDestination() {
 		return destination;
 	}
 
-	public void setDestination(Worehouse destination) {
+	public void setDestination(Warehouse destination) {
 		this.destination = destination;
 	}
 
@@ -107,20 +118,44 @@ public class MovementDetail {
 		this.updatedAt = updatedAt;
 	}
 
-	public MovementWorker getMovementWorkerDetail() {
-		return movementWorkerDetail;
+	public TypeMovementWarehouse getTypeMovementWarehouse() {
+		return typeMovementWarehouse;
 	}
 
-	public void setMovementWorkerDetail(MovementWorker movementWorkerDetail) {
-		this.movementWorkerDetail = movementWorkerDetail;
+	public void setTypeMovementWarehouse(TypeMovementWarehouse typeMovementWarehouse) {
+		this.typeMovementWarehouse = typeMovementWarehouse;
+	}	
+
+	public Part getPart() {
+		return part;
 	}
 
-	public TypeMovementWorehouse getTypeMovementWorehouse() {
-		return typeMovementWorehouse;
+	public void setPart(Part part) {
+		this.part = part;
 	}
 
-	public void setTypeMovementWorehouse(TypeMovementWorehouse typeMovementWorehouse) {
-		this.typeMovementWorehouse = typeMovementWorehouse;
+	public Component getComponent() {
+		return component;
+	}
+
+	public void setComponent(Component component) {
+		this.component = component;
+	}
+
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	public Worker getWorker() {
+		return worker;
+	}
+
+	public void setWorker(Worker worker) {
+		this.worker = worker;
 	}
 
 	@PrePersist

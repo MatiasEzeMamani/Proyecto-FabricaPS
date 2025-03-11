@@ -1,0 +1,71 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.ComponentStockDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.mapper.ComponentStockMapper;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.service.interfac.IComponentStockService;
+
+@Service
+public class ComponentStockService implements IComponentStockService {
+
+	@Autowired
+	private ComponentRepository componentRepository;
+
+	@Autowired
+	private ComponentStockMapper componentStockMapper;
+
+	private Response createResponse(int statusCode, String message, ComponentStockDTO componentStockDTO) {
+		
+		Response response = new Response();
+		
+		response.setStatusCode(statusCode);
+		response.setMessage(message);
+		response.setComponentStock(componentStockDTO);
+		
+		return response;
+	}
+
+	@Override
+	public Response addStock(Long componentId, int quantity) {
+
+		Response response = new Response();
+		
+		try {
+			
+			Optional<Component> optionalComponent = componentRepository.findById(componentId);
+			
+			if( optionalComponent.isEmpty()) {
+				return createResponse(400, "Componente no encontrado con ID: " + componentId, null);
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
+	public Response reduceStock(Long componentId, int quantity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getStockByComponentId(Long componentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getAllComponentsStock() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

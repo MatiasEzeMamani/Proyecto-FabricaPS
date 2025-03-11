@@ -1,0 +1,18 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.service.interfac.IComponentStockService;
+
+@RestController
+@RequestMapping("/api/component-stock")
+public class ComponentStock {
+
+	@Autowired
+	private IComponentStockService componentStockService;
+
+	
+	
+}

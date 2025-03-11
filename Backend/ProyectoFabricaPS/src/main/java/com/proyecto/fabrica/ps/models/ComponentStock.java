@@ -14,6 +14,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
@@ -25,11 +26,13 @@ public class ComponentStock {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long componentStockId;
 	
+	@Min(0)
 	@Column(nullable = false)
-	private int available_stock;
+	private int availableStock;
 	
+	@Min(0)
 	@Column(nullable = false)
-	private int can_be_produced ;
+	private int canBeProduced ;
 	
 	@OneToOne
     @JoinColumn(name = "componentId", referencedColumnName = "componentId")
@@ -51,21 +54,29 @@ public class ComponentStock {
 	public void setComponentStockId(Long componentStockId) {
 		this.componentStockId = componentStockId;
 	}
-
-	public int getAvailable_stock() {
-		return available_stock;
+	
+	public int getAvailableStock() {
+		return availableStock;
 	}
 
-	public void setAvailable_stock(int available_stock) {
-		this.available_stock = available_stock;
+	public void setAvailableStock(int availableStock) {
+		this.availableStock = availableStock;
 	}
 
-	public int getCan_be_produced() {
-		return can_be_produced;
+	public int getCanBeProduced() {
+		return canBeProduced;
 	}
 
-	public void setCan_be_produced(int can_be_produced) {
-		this.can_be_produced = can_be_produced;
+	public void setCanBeProduced(int canBeProduced) {
+		this.canBeProduced = canBeProduced;
+	}
+
+	public Component getComponent() {
+		return component;
+	}
+
+	public void setComponent(Component component) {
+		this.component = component;
 	}
 
 	public Date getCreatedAt() {

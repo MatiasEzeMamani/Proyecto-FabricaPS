@@ -12,5 +12,5 @@ public interface ComponentMapper {
 	
 	ComponentDTO componentToComponentDTO(Component component);
 	
-	List<ComponentDTO> componentsToComponentDTOs(List<Component> component);
+	List<ComponentDTO> componentsToComponentDTOs(List<Component> components);
 }

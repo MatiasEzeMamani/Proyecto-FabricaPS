@@ -62,7 +62,7 @@ public class Worker implements UserDetails {
 	private Role role;
 	
 	@OneToMany(mappedBy = "worker", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<MovementWorker> movementWorker;
+	private List<MovementDetail> movementDetailWorker;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -190,13 +190,13 @@ public class Worker implements UserDetails {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	public List<MovementWorker> getMovementWorker() {
-		return movementWorker;
+	
+	public List<MovementDetail> getMovementDetailWorker() {
+		return movementDetailWorker;
 	}
 
-	public void setMovementWorker(List<MovementWorker> movementWorker) {
-		this.movementWorker = movementWorker;
+	public void setMovementDetailWorker(List<MovementDetail> movementDetailWorker) {
+		this.movementDetailWorker = movementDetailWorker;
 	}
 
 	@PrePersist

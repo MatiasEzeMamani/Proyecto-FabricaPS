@@ -1,0 +1,40 @@
+package com.proyecto.fabrica.ps.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proyecto.fabrica.ps.service.interfac.IComponentStockService;
+
+@RestController
+@RequestMapping("/api/component-stock")
+public class ComponentStock {
+
+	@Autowired
+	private IComponentStockService componentStockService;
+
+	 @PostMapping("/{componentId}/add-stock/{quantity}")
+	    public ResponseEntity<Response> addStock(@PathVariable Long componentId, @PathVariable int quantity) {
+	        Response response = componentStockService.addStock(componentId, quantity);
+	        return ResponseEntity.status(response.getStatusCode()).body(response);
+	    }
+
+	    @PostMapping("/{componentId}/reduce-stock/{quantity}")
+	    public ResponseEntity<Response> reduceStock(@PathVariable Long componentId, @PathVariable int quantity) {
+	        Response response = componentStockService.reduceStock(componentId, quantity);
+	        return ResponseEntity.status(response.getStatusCode()).body(response);
+	    }
+
+	    @GetMapping("/{componentId}")
+	    public ResponseEntity<Response> getStockByComponentId(@PathVariable Long componentId) {
+	        Response response = componentStockService.getStockByComponentId(componentId);
+	        return ResponseEntity.status(response.getStatusCode()).body(response);
+	    }
+
+	    @GetMapping("/all")
+	    public ResponseEntity<Response> getAllComponentsStock() {
+	        Response response = componentStockService.getAllComponentsStock();
+	        return ResponseEntity.status(response.getStatusCode()).body(response);
+	    }
+	
+}

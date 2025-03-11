@@ -1,0 +1,11 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.List;
+
+public class MovementWorkerDTO {
+	
+	private Long movementWorkerId; // ID del movimiento
+    private Long workerId; // Solo el ID del worker en lugar del objeto completo
+    private String workerName; // Nombre del trabajador para mostrar en el frontend
+    private List<MovementDetailDTO> movementDetails; // Lista de detalles del movimiento
+}

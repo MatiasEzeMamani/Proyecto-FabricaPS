@@ -38,11 +38,21 @@ public class Part {
 	@Min(value = 1, message = "El número debe ser mayor que 0.")
 	private int matrix;
 	
+	@NotNull
+	@Min(0)
+	private int quantity;
+	
 	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ComponentPart> componentHasPart;
 	
 	@OneToMany(mappedBy = "part", cascade = CascadeType.ALL)
 	private List<MaterialPart> materialPart;
+	
+	@OneToMany(mappedBy = "part", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovementDetail> movementDetails;
+	
+	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Stock> stockPart;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -99,6 +109,37 @@ public class Part {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public List<ComponentPart> getComponentHasPart() {
+		return componentHasPart;
+	}
+
+	public void setComponentHasPart(List<ComponentPart> componentHasPart) {
+		this.componentHasPart = componentHasPart;
+	}
+
+	public List<MovementDetail> getMovementDetails() {
+		return movementDetails;
+	}
+
+	public void setMovementDetails(List<MovementDetail> movementDetails) {
+		this.movementDetails = movementDetails;
+	}
+
+	public List<Stock> getStockPart() {
+		return stockPart;
+	}
+
+	public void setStockPart(List<Stock> stockPart) {
+		this.stockPart = stockPart;
 	}
 
 	@PrePersist

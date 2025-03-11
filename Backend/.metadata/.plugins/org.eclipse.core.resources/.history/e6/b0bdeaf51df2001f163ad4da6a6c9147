@@ -1,0 +1,28 @@
+package com.proyecto.fabrica.ps.dto;
+
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Warehouse;
+
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+public class StockDTO {
+	
+	private Long stockId;
+
+	private int quantity;
+
+	private Warehouse warehouse;
+
+	private Part part;
+
+	private Component component;
+
+	private Article article;
+
+}

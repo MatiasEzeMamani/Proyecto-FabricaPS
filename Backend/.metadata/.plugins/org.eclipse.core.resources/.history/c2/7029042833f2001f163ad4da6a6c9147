@@ -1,0 +1,120 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Stock;
+import com.proyecto.fabrica.ps.models.TypeMovementWarehouse;
+import com.proyecto.fabrica.ps.models.Warehouse;
+import com.proyecto.fabrica.ps.repositories.StockRepository;
+import com.proyecto.fabrica.ps.service.interfac.IStockService;
+
+@Service
+public class StockService implements IStockService {
+
+    @Autowired
+    private StockRepository stockRepository;
+
+    @Override
+    @Transactional
+    public Response updateStock(MovementDetail movementDetail, Warehouse origin, Warehouse destination) {
+        Response response = new Response();
+        int quantity = movementDetail.getQuantity();
+        TypeMovementWarehouse type = movementDetail.getTypeMovementWarehouse();
+
+        try {
+            // Obtener stock en el almacén de origen y destino
+            Stock stockOrigin = findStockByWarehouseAndItem(origin, movementDetail);
+            Stock stockDestination = findStockByWarehouseAndItem(destination, movementDetail);
+
+            // Si no existe stock en el origen, lo creamos con cantidad 0
+            if (stockOrigin == null) {
+                stockOrigin = createNewStock(origin, movementDetail);
+                System.out.println("Creando nuevo stock en el almacén de origen");
+            }
+
+            // Si no existe stock en el destino, lo creamos con cantidad 0
+            if (stockDestination == null) {
+                stockDestination = createNewStock(destination, movementDetail);
+                System.out.println("Creando nuevo stock en el almacén de destino");
+            }
+
+            if (type == TypeMovementWarehouse.EXIT || type == TypeMovementWarehouse.TRANSFER) {
+                // Si es salida o transferencia, se resta del almacén de origen
+                stockOrigin = updateStockQuantity(stockOrigin, quantity, false); // false porque es una resta
+            }
+
+            if (type == TypeMovementWarehouse.ENTRY || type == TypeMovementWarehouse.TRANSFER) {
+                // Si es entrada o transferencia, se suma al almacén de destino
+                stockDestination = updateStockQuantity(stockDestination, quantity, true); // true porque es una suma
+            }
+
+            // Guardar el stock actualizado
+            stockRepository.save(stockOrigin);
+            stockRepository.save(stockDestination);
+
+            response.setStatusCode(200);
+            response.setMessage("Stock actualizado exitosamente.");
+        } catch (OurException e) {
+            response.setStatusCode(400);
+            response.setMessage(e.getMessage());
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error al actualizar el stock: " + e.getMessage());
+        }
+
+        return response;
+    }
+
+    // Método auxiliar para obtener el stock en base al almacén y tipo de ítem
+    private Stock findStockByWarehouseAndItem(Warehouse warehouse, MovementDetail movementDetail) {
+        Stock stock = null;
+
+        // Verificamos cuál es el tipo de ítem que se pasa en el MovementDetail
+        if (movementDetail.getPart() != null) {
+            stock = stockRepository.findByWarehouseAndPart(warehouse, movementDetail.getPart());
+        } else if (movementDetail.getArticle() != null) {
+            stock = stockRepository.findByWarehouseAndArticle(warehouse, movementDetail.getArticle());
+        } else if (movementDetail.getComponent() != null) {
+            stock = stockRepository.findByWarehouseAndComponent(warehouse, movementDetail.getComponent());
+        }
+
+        return stock;
+    }
+
+    // Método auxiliar para actualizar la cantidad del stock (suma o resta según corresponda)
+    private Stock updateStockQuantity(Stock stock, int quantity, boolean isAdding) {
+        int newQuantity = isAdding ? stock.getQuantity() + quantity : stock.getQuantity() - quantity;
+
+        if (newQuantity < 0) {
+            throw new OurException("No hay suficiente stock en el almacén.");
+        }
+        
+        stock.setQuantity(newQuantity);
+        return stock;
+    }
+
+    // Método para crear un nuevo stock si no existe
+    private Stock createNewStock(Warehouse warehouse, MovementDetail movementDetail) {
+        Stock newStock = new Stock();
+        newStock.setWarehouse(warehouse);
+        setStockItem(newStock, movementDetail);
+        newStock.setQuantity(0);  // Set initial quantity to 0
+        return newStock;
+    }
+
+    // Método auxiliar para asignar el tipo de ítem al stock (sin repetir el código)
+    private void setStockItem(Stock stock, MovementDetail movementDetail) {
+        if (movementDetail.getPart() != null) {
+            stock.setPart(movementDetail.getPart());
+        } else if (movementDetail.getArticle() != null) {
+            stock.setArticle(movementDetail.getArticle());
+        } else if (movementDetail.getComponent() != null) {
+            stock.setComponent(movementDetail.getComponent());
+        }
+    }
+}

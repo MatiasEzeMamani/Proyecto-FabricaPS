@@ -40,9 +40,19 @@ public class Component {
 	@Min(value = 0, message = "El número no debe ser negativo.")
 	private int stock;
 	
+	@NotNull
+	@Min(0)
+	private int quantity;
+	
 	@OneToMany(mappedBy = "component", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<ComponentPart> partHasComponent;
+	
+	@OneToMany(mappedBy = "component", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovementDetail> movementDetail;
+	
+	@OneToMany(mappedBy = "component", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Stock> stockComponent;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -99,6 +109,30 @@ public class Component {
 
 	public void setPartHasComponent(List<ComponentPart> partHasComponent) {
 		this.partHasComponent = partHasComponent;
+	}
+
+	public List<MovementDetail> getMovementDetail() {
+		return movementDetail;
+	}
+
+	public void setMovementDetail(List<MovementDetail> movementDetail) {
+		this.movementDetail = movementDetail;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public List<Stock> getStockComponent() {
+		return stockComponent;
+	}
+
+	public void setStockComponent(List<Stock> stockComponent) {
+		this.stockComponent = stockComponent;
 	}
 
 	@PrePersist

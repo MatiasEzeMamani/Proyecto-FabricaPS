@@ -1,0 +1,16 @@
+package com.proyecto.fabrica.ps.mapper;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.proyecto.fabrica.ps.dto.StockDTO;
+import com.proyecto.fabrica.ps.models.Stock;
+
+@Mapper(componentModel = "spring")
+public interface StockMapper {
+	
+	StockDTO stockToStockDTO(Stock stock);
+	
+	List<StockDTO> stocksToStockDTOs(List<Stock> stocks);
+}

@@ -1,0 +1,92 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.mapper.MovementDetailMapper;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.ArticleRepository;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.repositories.MovementDetailRepository;
+import com.proyecto.fabrica.ps.repositories.PartRepository;
+import com.proyecto.fabrica.ps.service.interfac.IMovementDetailService;
+
+public class MovementDetailService implements IMovementDetailService {
+
+	@Autowired
+	private MovementDetailRepository movementDetailRepository;
+
+	@Autowired
+	private MovementDetailMapper movementDetailMapper;
+
+	@Autowired
+	private PartRepository partRepository;
+
+	@Autowired
+	private ArticleRepository articleRepository;
+
+	@Autowired
+	private ComponentRepository componentRepository;
+
+	@Override
+	public Response addMovementDetail(MovementDetailDTO movementDetailDTO) {
+
+		Response response = new Response();
+
+		try {
+
+			MovementDetail movementDetail = new MovementDetail();
+			movementDetail.setQuantity(movementDetailDTO.getQuantity());
+			movementDetail.setTypeMovementWarehouse(movementDetailDTO.getTypeMovementWarehouse());
+
+			Part part = partRepository.findById(movementDetailDTO.getPartId()).orElseThrow(
+					() -> new OurException("Parte no encontrada con ID: " + movementDetailDTO.getPartId()));
+			movementDetail.setPart(part);
+
+			Article article = articleRepository.findById(movementDetailDTO.getArticleId())
+					.orElseThrow(() -> new OurException(
+							"Artículo no encontrado con ID: " + movementDetailDTO.getArticleId()));
+			movementDetail.setArticle(article);
+
+			Component component = componentRepository.findById(movementDetailDTO.getComponent().getComponentId())
+					.orElseThrow(() -> new OurException(
+							"Componente no encontrado con ID: " + movementDetailDTO.getComponent().getComponentId()));
+			movementDetail.setComponent(component);
+
+			MovementDetail savedMovement = movementDetailRepository.save(movementDetail);
+		} catch (OurException e) {
+
+		}
+		return null;
+	}
+
+	@Override
+	public Response updateMovementDetail(Long id, MovementDetailDTO movementDetailDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response deleteMovementDetail(Long id, Worker currentUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getMovementDetailById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getAllMovementDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

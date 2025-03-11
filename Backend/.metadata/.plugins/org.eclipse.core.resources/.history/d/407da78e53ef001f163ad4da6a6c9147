@@ -1,0 +1,7 @@
+package com.proyecto.fabrica.ps.controllers;
+
+@RestController
+@RequestMapping("/api/movement-details")
+public class MovementDetailController {
+
+}

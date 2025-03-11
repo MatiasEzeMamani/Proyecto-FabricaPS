@@ -1,0 +1,7 @@
+package com.proyecto.fabrica.ps.service.interfac;
+
+public interface IMovementDetailService {
+	
+	Response addMovementDetail
+	Response getAllMovementDetail
+}

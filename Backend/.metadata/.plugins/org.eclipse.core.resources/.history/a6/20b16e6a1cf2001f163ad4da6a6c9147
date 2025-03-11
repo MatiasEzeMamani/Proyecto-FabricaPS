@@ -1,0 +1,26 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Stock;
+import com.proyecto.fabrica.ps.models.Warehouse;
+import com.proyecto.fabrica.ps.service.interfac.IStockService;
+
+public class StockService implements IStockService {
+
+	@Override
+	public Response updateStock(Warehouse warehouse, Part part, Article article, Component component, int quantity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response setStockItem(Stock stock, MovementDetail movementDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

@@ -19,10 +19,10 @@ INDEX VERSION 1.134+C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica
 2616790201.index
 3349823575.index
 1121357568.index
-3672246780.index
 2971041201.index
 1731377.index
 3309139480.index
+48314723.index
 518824418.index
 3650122527.index
 4111049617.index
@@ -36,7 +36,6 @@ INDEX VERSION 1.134+C:\Users\Matias Mamani\Desktop\Proyecto Pino\ProyectoFabrica
 2547285669.index
 3131597524.index
 400588934.index
-48314723.index
 1484725309.index
 1331170942.index
 3521607870.index

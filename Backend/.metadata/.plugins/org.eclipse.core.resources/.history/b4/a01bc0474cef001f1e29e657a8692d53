@@ -1,0 +1,69 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.mapper.MovementDetailMapper;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.ArticleRepository;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.repositories.MovementDetailRepository;
+import com.proyecto.fabrica.ps.repositories.PartRepository;
+import com.proyecto.fabrica.ps.service.interfac.IMovementDetailService;
+
+public class MovementDetailService implements IMovementDetailService {
+
+	@Autowired
+	private MovementDetailRepository movementDetailRepository;
+	
+	@Autowired
+	private MovementDetailMapper movementDetailMapper;
+	
+	@Autowired
+	private PartRepository partRepository;
+	
+	@Autowired
+	private ArticleRepository articleRepository;
+	
+	@Autowired
+	private ComponentRepository componentRepository;
+	
+	@Override
+	public Response addMovementDetail(MovementDetailDTO movementDetailDTO) {
+		
+		Response response = new Response();
+		
+		try {
+			
+			MovementDetail movementDetail = new MovementDetail();
+			
+			
+		}
+		return null;
+	}
+
+	@Override
+	public Response updateMovementDetail(Long id, MovementDetailDTO movementDetailDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response deleteMovementDetail(Long id, Worker currentUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getMovementDetailById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Response getAllMovementDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

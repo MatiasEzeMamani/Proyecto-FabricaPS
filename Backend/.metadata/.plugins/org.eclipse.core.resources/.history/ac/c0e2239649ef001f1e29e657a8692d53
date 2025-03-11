@@ -1,0 +1,16 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.Date;
+
+public class MovementDetailDTO {
+	
+	private Long movementDetailId;
+    private int quantity;
+    private Long originWorehouseId; 
+    private Long destinationWorehouseId;
+    private String typeMovementWorehouse; 
+    private Long movementWorkerId; 
+    private Date createdAt;
+    private Date updatedAt;
+
+}

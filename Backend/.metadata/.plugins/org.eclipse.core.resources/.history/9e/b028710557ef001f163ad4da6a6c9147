@@ -1,0 +1,215 @@
+package com.proyecto.fabrica.ps.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.fabrica.ps.dto.MovementDetailDTO;
+import com.proyecto.fabrica.ps.dto.Response;
+import com.proyecto.fabrica.ps.exception.OurException;
+import com.proyecto.fabrica.ps.mapper.MovementDetailMapper;
+import com.proyecto.fabrica.ps.models.Article;
+import com.proyecto.fabrica.ps.models.Component;
+import com.proyecto.fabrica.ps.models.MovementDetail;
+import com.proyecto.fabrica.ps.models.Part;
+import com.proyecto.fabrica.ps.models.Role;
+import com.proyecto.fabrica.ps.models.Worker;
+import com.proyecto.fabrica.ps.repositories.ArticleRepository;
+import com.proyecto.fabrica.ps.repositories.ComponentRepository;
+import com.proyecto.fabrica.ps.repositories.MovementDetailRepository;
+import com.proyecto.fabrica.ps.repositories.PartRepository;
+import com.proyecto.fabrica.ps.service.interfac.IMovementDetailService;
+
+@Service
+public class MovementDetailService implements IMovementDetailService {
+
+	@Autowired
+	private MovementDetailRepository movementDetailRepository;
+
+	@Autowired
+	private MovementDetailMapper movementDetailMapper;
+
+	@Autowired
+	private PartRepository partRepository;
+
+	@Autowired
+	private ArticleRepository articleRepository;
+
+	@Autowired
+	private ComponentRepository componentRepository;
+
+	@Override
+	public Response addMovementDetail(MovementDetailDTO movementDetailDTO) {
+
+		Response response = new Response();
+
+		try {
+
+			MovementDetail movementDetail = new MovementDetail();
+			movementDetail.setQuantity(movementDetailDTO.getQuantity());
+			movementDetail.setTypeMovementWarehouse(movementDetailDTO.getTypeMovementWarehouse());
+
+			if (movementDetailDTO.getPartId() != null) {
+				Part part = partRepository.findById(movementDetailDTO.getPartId()).orElseThrow(
+						() -> new OurException("Parte no encontrada con ID: " + movementDetailDTO.getPartId()));
+				movementDetail.setPart(part);
+			} else if (movementDetailDTO.getArticleId() != null) {
+				Article article = articleRepository.findById(movementDetailDTO.getArticleId()).orElseThrow(
+						() -> new OurException("Artículo no encontrado con ID: " + movementDetailDTO.getArticleId()));
+				movementDetail.setArticle(article);
+			} else if (movementDetailDTO.getComponentId() != null) {
+				Component component = componentRepository.findById(movementDetailDTO.getComponentId())
+						.orElseThrow(() -> new OurException(
+								"Componente no encontrado con ID: " + movementDetailDTO.getComponentId()));
+				movementDetail.setComponent(component);
+			} else {
+				throw new OurException("Debe proporcionar un PartId, ArticleId o ComponentId, pero no más de uno.");
+			}
+
+			if (movementDetailDTO.getOriginId() == null || movementDetailDTO.getDestinationId() == null) {
+				throw new OurException("Debe especificar tanto el almacén de origen como el de destino.");
+			}
+			
+			response.setStatusCode(200);
+			response.setMessage("Movimiento añadido exitosamente");
+			response.setMovementDetail(movementDetailMapper.movementDetailToMovementDetailDTO(savedMovement));
+
+		} catch (OurException e) {
+
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al añadir el movimiento: " + e.getMessage());
+
+		}
+		return response;
+	}
+
+	@Override
+	public Response updateMovementDetail(Long id, MovementDetailDTO movementDetailDTO) {
+		Response response = new Response();
+
+		try {
+			MovementDetail movementDetail = movementDetailRepository.findById(id)
+					.orElseThrow(() -> new OurException("Movimiento no encontrado con ID: " + id));
+
+			movementDetail.setQuantity(movementDetailDTO.getQuantity());
+			movementDetail.setTypeMovementWarehouse(movementDetailDTO.getTypeMovementWarehouse());
+
+			Part part = partRepository.findById(movementDetailDTO.getPartId()).orElseThrow(
+					() -> new OurException("Parte no encontrada con ID: " + movementDetailDTO.getPartId()));
+			movementDetail.setPart(part);
+
+			Article article = articleRepository.findById(movementDetailDTO.getArticleId()).orElseThrow(
+					() -> new OurException("Artículo no encontrado con ID: " + movementDetailDTO.getArticleId()));
+			movementDetail.setArticle(article);
+
+			Component component = componentRepository.findById(movementDetailDTO.getComponentId()).orElseThrow(
+					() -> new OurException("Componente no encontrado con ID: " + movementDetailDTO.getComponentId()));
+			movementDetail.setComponent(component);
+
+			MovementDetail updatedMovement = movementDetailRepository.save(movementDetail);
+
+			response.setStatusCode(200);
+			response.setMessage("Movimiento actualizado exitosamente");
+			response.setMovementDetail(movementDetailMapper.movementDetailToMovementDetailDTO(updatedMovement));
+
+		} catch (OurException e) {
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+		} catch (Exception e) {
+			response.setStatusCode(500);
+			response.setMessage("Error al actualizar el movimiento: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response deleteMovementDetail(Long workerId, @AuthenticationPrincipal Worker currentUser) {
+
+		Response response = new Response();
+
+		try {
+			if (!currentUser.getRole().equals(Role.ADMINISTRATOR)) {
+				throw new OurException("No tienes permisos para eliminar movimientos");
+			}
+
+			if (!movementDetailRepository.existsById(workerId)) {
+				throw new OurException("Movimiento no encontrado con ID: " + workerId);
+			}
+
+			movementDetailRepository.deleteById(workerId);
+			response.setStatusCode(200);
+			response.setMessage("Movimiento eliminado exitosamente.");
+
+		} catch (OurException e) {
+
+			response.setStatusCode(404);
+			response.setMessage(e.getMessage());
+
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al eliminar el movimiento: " + e.getMessage());
+
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getMovementDetailById(Long id) {
+
+		Response response = new Response();
+
+		try {
+
+			MovementDetail movementDetail = movementDetailRepository.findById(id)
+					.orElseThrow(() -> new OurException("Movimiento no encontrado con ID: " + id));
+
+			MovementDetailDTO movementDetailDTO = movementDetailMapper
+					.movementDetailToMovementDetailDTO(movementDetail);
+			response.setStatusCode(200);
+			response.setMovementDetail(movementDetailDTO);
+
+		} catch (OurException e) {
+
+			response.setStatusCode(400);
+			response.setMessage(e.getMessage());
+
+		} catch (Exception e) {
+
+			response.setStatusCode(500);
+			response.setMessage("Error al buscar el movimiento: " + e.getMessage());
+
+		}
+
+		return response;
+	}
+
+	@Override
+	public Response getAllMovementDetails() {
+
+		Response response = new Response();
+
+		try {
+			List<MovementDetail> movementDetails = movementDetailRepository.findAll();
+
+			response.setStatusCode(200);
+			response.setMessage("Lista de movimientos obtenida exitosamente");
+			response.setMovementDetailList(movementDetailMapper.movementDetailsToMovementDetailDTOs(movementDetails));
+
+		} catch (Exception e) {
+			response.setStatusCode(500);
+			response.setMessage("Error al obtener los movimientos: " + e.getMessage());
+		}
+
+		return response;
+	}
+}

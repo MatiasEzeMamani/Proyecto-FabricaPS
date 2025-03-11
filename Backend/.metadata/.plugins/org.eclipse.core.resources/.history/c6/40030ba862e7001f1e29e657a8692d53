@@ -1,0 +1,12 @@
+package com.proyecto.fabrica.ps.dto;
+
+public class MovementDetailDTO {
+	private Long movementDetailId;
+    private int quantity;
+    private Long originWorehouseId; // ID del almacén de origen
+    private Long destinationWorehouseId; // ID del almacén de destino
+    private String typeMovementWorehouse; // Tipo de movimiento como String
+    private Long movementWorkerId; // ID del movimiento principal
+    private Date createdAt;
+    private Date updatedAt;
+}

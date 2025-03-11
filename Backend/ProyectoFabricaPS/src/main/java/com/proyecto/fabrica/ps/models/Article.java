@@ -1,9 +1,11 @@
 package com.proyecto.fabrica.ps.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,10 +14,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -57,6 +61,16 @@ public class Article {
 	@OneToOne
 	@JoinColumn(name = "component_has_part_id")
 	private ComponentPart componentHasPart;
+	
+	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovementDetail> movementDetails;
+	
+	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Stock> stockArticle;
+	
+	@NotNull
+	@Min(0)
+	private int quantity;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -153,6 +167,30 @@ public class Article {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public List<MovementDetail> getMovementDetails() {
+		return movementDetails;
+	}
+
+	public void setMovementDetails(List<MovementDetail> movementDetails) {
+		this.movementDetails = movementDetails;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public List<Stock> getStockArticle() {
+		return stockArticle;
+	}
+
+	public void setStockArticle(List<Stock> stockArticle) {
+		this.stockArticle = stockArticle;
 	}
 
 	@PrePersist

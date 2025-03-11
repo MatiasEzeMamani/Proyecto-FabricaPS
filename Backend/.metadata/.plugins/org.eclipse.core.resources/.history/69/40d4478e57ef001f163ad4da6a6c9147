@@ -1,0 +1,117 @@
+package com.proyecto.fabrica.ps.dto;
+
+import java.util.Date;
+
+import com.proyecto.fabrica.ps.models.TypeMovementWarehouse;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+public class MovementDetailDTO {
+
+	private Long movementDetailId;
+
+	@NotNull
+	@Min(value = 1, message = "La cantidad debe ser mayor a 0.")
+	private int quantity;
+	private Long originWarehouseId;
+	private Long destinationWarehouseId;
+	private Long partId;
+	private Long componentId;
+	private Long articleId;
+	private Long workerId;
+
+	@NotNull
+	private TypeMovementWarehouse typeMovementWarehouse;
+	private Date createdAt;
+
+	public Long getMovementDetailId() {
+		return movementDetailId;
+	}
+
+	public void setMovementDetailId(Long movementDetailId) {
+		this.movementDetailId = movementDetailId;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Long getOriginWarehouseId() {
+		return originWarehouseId;
+	}
+
+	public void setOriginWarehouseId(Long originWarehouseId) {
+		this.originWarehouseId = originWarehouseId;
+	}
+
+	public Long getDestinationWarehouseId() {
+		return destinationWarehouseId;
+	}
+
+	public void setDestinationWarehouseId(Long destinationWarehouseId) {
+		this.destinationWarehouseId = destinationWarehouseId;
+	}
+
+	public Long getPartId() {
+		return partId;
+	}
+
+	public void setPartId(Long partId) {
+		this.partId = partId;
+	}
+
+	public Long getComponentId() {
+		return componentId;
+	}
+
+	public void setComponentId(Long componentId) {
+		this.componentId = componentId;
+	}
+
+	public Long getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
+
+	public Long getWorkerId() {
+		return workerId;
+	}
+
+	public void setWorkerId(Long workerId) {
+		this.workerId = workerId;
+	}
+
+	public TypeMovementWarehouse getTypeMovementWarehouse() {
+		return typeMovementWarehouse;
+	}
+
+	public void setTypeMovementWarehouse(TypeMovementWarehouse typeMovementWarehouse) {
+		this.typeMovementWarehouse = typeMovementWarehouse;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	public void validateSingleItem() {
+        int count = 0;
+        if (partId != null) count++;
+        if (articleId != null) count++;
+        if (componentId != null) count++;
+
+        if (count != 1) {
+            throw new IllegalArgumentException("Debe proporcionar exactamente uno de PartId, ArticleId o ComponentId.");
+    }
+}
