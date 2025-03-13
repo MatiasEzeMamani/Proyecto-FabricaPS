@@ -1,7 +1,0 @@
-package com.proyecto.fabrica.ps.service.interfac;
-
-import com.proyecto.fabrica.ps.dto.Response;
-
-public interface IStockService {
-	Response createOrUpdateStock(Long warehouseId, Long partId, int quantity);
-}

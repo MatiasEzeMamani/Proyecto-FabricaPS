@@ -1,7 +1,0 @@
-package com.proyecto.fabrica.ps.dto.material;
-
-public class AbbreviationDTO {
-
-	private String name;
-	private List<MaterialDTO> materials;
-}

@@ -1,7 +1,0 @@
-package com.proyecto.fabrica.ps.service.impl;
-
-import com.proyecto.fabrica.ps.service.interfac.IStockService;
-
-public class StockService implements IStockService {
-
-}

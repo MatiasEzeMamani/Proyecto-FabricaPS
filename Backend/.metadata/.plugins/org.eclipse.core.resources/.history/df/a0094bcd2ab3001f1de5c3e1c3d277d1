@@ -1,8 +1,0 @@
-package com.proyecto.fabrica.ps.dto.material;
-
-public class TypeMaterialDTO {
-
-	private String name;
-	
-	private List<MaterialDTO> materialType;
-}
